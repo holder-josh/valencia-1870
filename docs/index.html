@@ -276,6 +276,7 @@ async function load(){
     <div class="pr"><div class="nm">${r[0]}<span class="df">${r[1]}</span></div><div class="pc">${r[2]}</div></div>`).join('');
 
   function paceFor(t){
+    const mp = CONFIG.goalMP;
     switch(t){
       case 'recovery': case 'recovery_speed': return band(mp*1.25,mp*1.35);
       case 'ga': case 'ga_speed': return band(mp*1.15,mp*1.25);
