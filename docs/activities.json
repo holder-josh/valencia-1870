@@ -1,0 +1,85 @@
+{
+ "updated": "2026-08-14T12:28:29+00:00",
+ "activities": [
+  {
+   "date": "2026-08-04",
+   "name": "Week 1, run 1. Valencia training block. A commute run with 25 minutes at LT",
+   "km": 14.46,
+   "moving_s": 4046,
+   "pace_s_per_km": 280,
+   "avg_hr": 166,
+   "elev_m": 31,
+   "strava_id": 19593819439
+  },
+  {
+   "date": "2026-08-05",
+   "name": "Week 1, run 2. Recovery",
+   "km": 6.17,
+   "moving_s": 1931,
+   "pace_s_per_km": 313,
+   "avg_hr": 141,
+   "elev_m": 30,
+   "strava_id": 19608610995
+  },
+  {
+   "date": "2026-08-07",
+   "name": "Week 1, run 3.",
+   "km": 12.03,
+   "moving_s": 3677,
+   "pace_s_per_km": 306,
+   "avg_hr": 146,
+   "elev_m": 55,
+   "strava_id": 19637227497
+  },
+  {
+   "date": "2026-08-08",
+   "name": "Week 1, run 4. \ud83e\udd75\u2600\ufe0f",
+   "km": 20.01,
+   "moving_s": 5810,
+   "pace_s_per_km": 290,
+   "avg_hr": 165,
+   "elev_m": 53,
+   "strava_id": 19650869104
+  },
+  {
+   "date": "2026-08-09",
+   "name": "Week 1, run 5. 64km week.",
+   "km": 12.02,
+   "moving_s": 3762,
+   "pace_s_per_km": 313,
+   "avg_hr": 152,
+   "elev_m": 47,
+   "strava_id": 19672311744
+  },
+  {
+   "date": "2026-08-10",
+   "name": "Week 2, run 1.",
+   "km": 6.35,
+   "moving_s": 1995,
+   "pace_s_per_km": 314,
+   "avg_hr": 144,
+   "elev_m": 29,
+   "strava_id": 19677775045
+  },
+  {
+   "date": "2026-08-12",
+   "name": "Week 2, run 2.",
+   "km": 18.4,
+   "moving_s": 5320,
+   "pace_s_per_km": 289,
+   "avg_hr": 159,
+   "elev_m": 39,
+   "strava_id": 19707693037
+  },
+  {
+   "date": "2026-08-14",
+   "name": "Week 2, run 3.",
+   "km": 11.01,
+   "moving_s": 3360,
+   "pace_s_per_km": 305,
+   "avg_hr": 147,
+   "elev_m": 42,
+   "strava_id": 19734410257
+  }
+ ]
+}
