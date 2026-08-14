@@ -121,6 +121,44 @@ h2{font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:
   font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .colhead .v{text-align:right}
 
+/* week panel */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px 13px;margin-bottom:4px}
+.ptop{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ptop .big{font-family:'IBM Plex Mono';font-size:26px;font-weight:600;line-height:1}
+.ptop .big small{font-size:13px;color:var(--dim);font-weight:400}
+.ptop .rhs{text-align:right;font-size:11.5px;color:var(--dim);line-height:1.35}
+.ptop .rhs b{color:var(--paper);font-weight:600}
+.ptrack{position:relative;height:8px;background:#252b34;border-radius:4px;margin:10px 0 4px;overflow:hidden}
+.ptrack .zone{position:absolute;top:0;bottom:0;background:rgba(87,184,165,.18);
+  border-left:1px solid rgba(87,184,165,.5);border-right:1px solid rgba(87,184,165,.5)}
+.ptrack .fill{position:absolute;left:0;top:0;bottom:0;background:var(--teal);border-radius:4px}
+.ptrack .fill.over{background:var(--amber)}
+.ptick{display:flex;justify-content:space-between;font-family:'IBM Plex Mono';font-size:9.5px;color:var(--faint)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px;padding-top:10px;border-top:1px solid var(--line)}
+.chip{font-family:'IBM Plex Mono';font-size:10.5px;padding:3px 7px;border-radius:5px;
+  border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.chip.done{border-color:rgba(87,184,165,.5);color:var(--teal);background:rgba(87,184,165,.10)}
+.chip.done::before{content:"✓ "}
+.chip.next{border-color:var(--orange);color:var(--orange)}
+
+/* trends */
+.trends{display:grid;gap:8px}
+.tcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tcard .th{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.tcard .tn{font-size:13px;font-weight:600}
+.tcard .tv{font-family:'IBM Plex Mono';font-size:19px;font-weight:600}
+.tcard .ts{font-size:12px;color:var(--dim);margin-top:3px;line-height:1.4}
+.scale{position:relative;height:24px;margin-top:9px}
+.scale .rail{position:absolute;left:0;right:0;top:9px;height:3px;background:#252b34;border-radius:2px}
+.scale .seg{position:absolute;top:9px;height:3px;border-radius:2px}
+.scale .mk{position:absolute;top:2px;width:1px;height:10px;background:var(--faint)}
+.scale .mk span{position:absolute;top:11px;left:50%;transform:translateX(-50%);
+  font-size:8.5px;color:var(--faint);white-space:nowrap}
+.scale .now{position:absolute;top:4px;width:9px;height:9px;border-radius:50%;
+  background:var(--paper);transform:translateX(-50%);border:2px solid var(--ink)}
+.wkdelta{font-size:10px;color:var(--faint)}
+.wkdelta.up{color:var(--amber)}
+
 /* pace table */
 .paces{border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .pr{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 14px;border-top:1px solid var(--line);background:var(--panel)}
@@ -145,8 +183,13 @@ a{color:var(--teal)}
 <div class="today" id="todaycard"></div>
 <div class="strip" id="strip"></div>
 
+<div class="panel" id="weekpanel"></div>
+
 <h2>The Block</h2>
 <div class="tape" id="tape"></div>
+
+<h2>Trends</h2>
+<div class="trends" id="trends"></div>
 
 <h2>Pace Bands · working MP 4:08/km</h2>
 <div class="paces" id="paces"></div>
@@ -175,6 +218,10 @@ const TYPE_META = {
 };
 const DAYS = ['mon','tue','wed','thu','fri','sat','sun'];
 const DLAB = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const EASY = new Set(['recovery','recovery_speed','ga','ga_speed','mlr','long']);
+const QUALITY = new Set(['lt','vo2','mp','race','marathon','dress']);
+// Historical anchors for the training-to-race-pace gap (s/km slower than goal MP)
+const GAP_MARKS = [{v:6,l:'Vienna'},{v:48,l:'Amsterdam'}];
 
 const fmtPace = s => `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;
 const band = (a,b) => `${fmtPace(a)}–${fmtPace(b)}/km`;
@@ -198,6 +245,18 @@ async function load(){
     const k = iso(mon);
     wkActual[k] = (wkActual[k]||0) + a.km;
   }
+
+  // date -> planned session (Monday included as Rest)
+  const planByDate = {};
+  for (const w of plan.weeks){
+    const mon = new Date(w.monday+'T00:00:00');
+    DAYS.forEach((k,i)=>{
+      const s = k==='mon' ? {type:'rest',label:'Rest',km:null} : w.days[k];
+      planByDate[iso(addDays(mon,i))] = {...s, weekMonday:w.monday};
+    });
+  }
+  const actsByDate = {};
+  for (const a of acts) (actsByDate[a.date] = actsByDate[a.date] || []).push(a);
 
   // find current week + day
   let cur=null;
@@ -243,6 +302,65 @@ async function load(){
         <div class="km">${act?act.toFixed(0)+'✓':(sess.km?sess.km[0]+'–'+sess.km[1]:'—')}</div>
       </div>`;
     }).join('');
+  }
+
+  // ---- this-week panel
+  if (cur){
+    const mon = new Date(cur.monday+'T00:00:00');
+    const done = wkActual[cur.monday] || 0;
+    const [tlo,thi] = cur.volume_km;
+    const scaleMax = Math.max(thi*1.12, done*1.05);
+    const pct = x => Math.min(x/scaleMax*100,100);
+
+    let remainKm = 0, left = [], nextSess = null;
+    DAYS.forEach((k,i)=>{
+      const d = addDays(mon,i);
+      if (d < today) return;
+      const s = k==='mon' ? null : cur.days[k];
+      if (!s || !s.km) return;
+      const ranAlready = +d===+today && (actsByDate[iso(d)]||[]).length;
+      if (ranAlready) return;
+      remainKm += (s.km[0]+s.km[1])/2;
+      left.push(s);
+      if (!nextSess) nextSess = {s, d, k};
+    });
+
+    // previous week's actual, for the load-change read
+    const prevMon = iso(addDays(mon,-7));
+    const prevKm = wkActual[prevMon];
+    let deltaTxt = '';
+    if (prevKm && done){
+      const projected = done + remainKm;
+      const dlt = (projected/prevKm - 1) * 100;
+      deltaTxt = `<div>proj. <b>${projected.toFixed(0)} km</b> · ${dlt>=0?'+':''}${dlt.toFixed(0)}% vs last wk</div>`;
+    }
+
+    // quality sessions this week
+    const chips = DAYS.slice(1).map((k,i)=>{
+      const s = cur.days[k];
+      if (!QUALITY.has(s.type)) return '';
+      const d = addDays(mon,i+1);
+      const ran = (actsByDate[iso(d)]||[]).reduce((t,a)=>t+a.km,0);
+      const hit = ran >= s.km[0]*0.6;
+      const isNext = !hit && d>=today;
+      const short = {lt:'LT',vo2:'VO₂max',mp:'MP run',race:'Tune-up',marathon:'RACE',dress:'Dress reh.'}[s.type];
+      return `<span class="chip ${hit?'done':''} ${isNext?'next':''}">${DLAB[i+1]} ${short}</span>`;
+    }).join('');
+
+    document.getElementById('weekpanel').innerHTML = `
+      <div class="ptop">
+        <div class="big">${done.toFixed(0)}<small> / ${tlo}–${thi} km</small></div>
+        <div class="rhs">
+          <div><b>${left.length}</b> session${left.length===1?'':'s'} left · ~<b>${remainKm.toFixed(0)} km</b></div>
+          ${deltaTxt}
+        </div>
+      </div>
+      <div class="ptrack">
+        <div class="zone" style="left:${pct(tlo)}%;width:${pct(thi)-pct(tlo)}%"></div>
+        <div class="fill ${done>thi?'over':''}" style="width:${pct(done)}%"></div>
+      </div>
+      <div class="ptick"><span>0</span><span>${tlo}</span><span>${thi}</span></div>
+      ${chips?`<div class="chips">${chips}</div>`:''}`;
   }
 
   // ---- tape
@@ -298,13 +416,89 @@ async function load(){
           <div class="bar" style="width:${hi}%"><div class="hi" style="width:${(hi-lo)/hi*100}%"></div></div>
           ${act?`<div class="actualbar ${act>w.volume_km[1]?'over':''}" style="width:${actW}%"></div>`:''}
         </div>
-        <div class="wkvol">${act?`<span class="act">${act.toFixed(0)}</span> / `:''}${w.volume_km[0]}–${w.volume_km[1]}</div>
+        <div class="wkvol">${act?`<span class="act">${act.toFixed(0)}</span> / `:''}${w.volume_km[0]}–${w.volume_km[1]}${(()=>{
+          const p = wkActual[iso(addDays(mon,-7))];
+          if(!act||!p) return '';
+          const dl = (act/p-1)*100;
+          return `<div class="wkdelta ${dl>12?'up':''}">${dl>=0?'+':''}${dl.toFixed(0)}% wk/wk</div>`;
+        })()}</div>
       </div>
       <div class="wkdays"><div class="colhead"><span></span><span>Planned / actual</span><span class="v">km</span><span class="v">pace</span></div>${dayrows}</div>
     </div>`;
   }
   tape.innerHTML = html;
   if (cur) document.getElementById('wk'+cur.weeks_to_goal)?.classList.add('open');
+
+  // ---- trends
+  (function(){
+    const mpG = CONFIG.goalMP;
+    const since = n => { const d = addDays(today,-n); return a => new Date(a.date+'T00:00:00') >= d; };
+
+    // classify each activity by its planned day type
+    const tagged = acts.map(a=>({...a, ptype:(planByDate[a.date]||{}).type||'rest'}));
+    const easyRuns = tagged.filter(a=>EASY.has(a.ptype) && a.pace_s_per_km);
+
+    // 1. training-to-race-pace gap (28d)
+    const e28 = easyRuns.filter(since(28));
+    let gapCard = '';
+    if (e28.length){
+      const km = e28.reduce((t,a)=>t+a.km,0);
+      const sec = e28.reduce((t,a)=>t+a.moving_s,0);
+      const avg = sec/km, gap = avg - mpG;
+      const lo=0, hi=60, p = v => Math.min(Math.max((v-lo)/(hi-lo),0),1)*100;
+      const marks = GAP_MARKS.map(m=>`<div class="mk" style="left:${p(m.v)}%"><span>${m.l} ${m.v}s</span></div>`).join('');
+      const verdict = gap < 20 ? 'Compressed — closer to the Vienna pattern than the Amsterdam one.'
+                    : gap < 32 ? 'Narrower than the Amsterdam block. Worth watching.'
+                    : 'Healthy separation between easy running and race pace.';
+      gapCard = `<div class="tcard">
+        <div class="th"><span class="tn">Easy-to-race-pace gap</span><span class="tv">${gap>=0?'+':''}${gap.toFixed(0)}s</span></div>
+        <div class="ts">28-day easy average ${fmtPace(avg)} vs goal MP ${fmtPace(mpG)}. ${verdict}</div>
+        <div class="scale"><div class="rail"></div>
+          <div class="seg" style="left:0;width:${p(20)}%;background:rgba(232,182,76,.5)"></div>
+          ${marks}<div class="now" style="left:${p(gap)}%"></div></div>
+      </div>`;
+    }
+
+    // 2. easy-pace discipline
+    function inBandPct(list){
+      let ok=0, tot=0;
+      for (const a of list){
+        const b = bandFor(a.ptype); if(!b) continue;
+        tot += a.km;
+        if (a.pace_s_per_km >= b[0]-3) ok += a.km;   // not too fast for the band
+      }
+      return tot ? {pct: ok/tot*100, km: tot} : null;
+    }
+    const d7 = inBandPct(easyRuns.filter(since(7)));
+    const d28 = inBandPct(easyRuns.filter(since(28)));
+    let discCard = '';
+    if (d28){
+      const v = d7 ? d7.pct : d28.pct;
+      discCard = `<div class="tcard">
+        <div class="th"><span class="tn">Easy km run easy</span><span class="tv" style="color:${v>=80?'var(--teal)':v>=60?'var(--amber)':'var(--orange)'}">${v.toFixed(0)}%</span></div>
+        <div class="ts">${d7?`${d7.km.toFixed(0)} km of easy running in the last 7 days; `:''}28-day figure ${d28.pct.toFixed(0)}%. Counts kilometres not run faster than the prescribed band.</div>
+      </div>`;
+    }
+
+    // 3. 7-day load change
+    const sum = (from,to) => acts.filter(a=>{
+      const d = new Date(a.date+'T00:00:00');
+      return d >= addDays(today,-from) && d < addDays(today,-to);
+    }).reduce((t,a)=>t+a.km,0);
+    const l7 = sum(7,0), p7 = sum(14,7);
+    let loadCard = '';
+    if (p7){
+      const dl = (l7/p7-1)*100;
+      const col = dl>15 ? 'var(--orange)' : dl>10 ? 'var(--amber)' : 'var(--teal)';
+      loadCard = `<div class="tcard">
+        <div class="th"><span class="tn">Rolling 7-day load</span><span class="tv" style="color:${col}">${dl>=0?'+':''}${dl.toFixed(0)}%</span></div>
+        <div class="ts">${l7.toFixed(0)} km this week against ${p7.toFixed(0)} km the week before. Jumps beyond roughly 12% are where this block has historically come apart.</div>
+      </div>`;
+    }
+
+    document.getElementById('trends').innerHTML = gapCard + discCard + loadCard ||
+      `<div class="tcard"><div class="ts">Not enough synced data yet.</div></div>`;
+  })();
 
   // ---- paces
   const mp = CONFIG.goalMP;
@@ -346,14 +540,29 @@ async function load(){
       zone = `<div class="bandzone" style="bottom:${Math.min(top,bot)}px;height:${Math.abs(top-bot)}px"></div>`;
     }
     const fastest = fmtPace(Math.min(...paces)), slowest = fmtPace(Math.max(...paces));
-    const inCount = sp.filter((s,i)=>{
+    const inCount = sp.filter(s=>{
       if(!bandArr||s.part) return false;
       return s.pace>=bandArr[0]-3 && s.pace<=bandArr[1]+3;
     }).length;
+    // aerobic decoupling: first half vs second half speed-to-HR ratio
+    let dec = '';
+    const full = sp.filter(s=>!s.part && s.hr);
+    if (full.length >= 8){
+      const h = Math.floor(full.length/2);
+      const ratio = arr => {
+        const dist = arr.reduce((t,s)=>t+s.d,0), tim = arr.reduce((t,s)=>t+s.t,0);
+        const hr = arr.reduce((t,s)=>t+s.hr,0)/arr.length;
+        return (dist/tim)/hr;
+      };
+      const r1 = ratio(full.slice(0,h)), r2 = ratio(full.slice(h));
+      const dp = (r1-r2)/r1*100;
+      const col = dp>8 ? 'var(--orange)' : dp>5 ? 'var(--amber)' : 'var(--dim)';
+      dec = ` · decoupling <b style="color:${col}">${dp>=0?'':'−'}${Math.abs(dp).toFixed(1)}%</b>`;
+    }
     return `<div class="splits">
       <div class="sbars">${zone}${bars}</div>
       <div class="slegend">
-        <span>${sp.length} km splits · fastest <b>${fastest}</b> · slowest <b>${slowest}</b></span>
+        <span>${sp.length} km · fastest <b>${fastest}</b> · slowest <b>${slowest}</b>${dec}</span>
         <span>${bandArr?`<b>${inCount}</b> in band`:''}</span>
       </div>
     </div>`;
