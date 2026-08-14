@@ -151,7 +151,7 @@ const DLAB = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 
 const fmtPace = s => `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;
 const band = (a,b) => `${fmtPace(a)}–${fmtPace(b)}/km`;
-const iso = d => d.toISOString().slice(0,10);
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 const addDays = (d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
 
 async function load(){
@@ -238,11 +238,12 @@ async function load(){
     const dayrows = DAYS.slice(1).map((k,i)=>{
       const s2 = w.days[k]; const d = addDays(mon, i+1);
       const isTodayLine = +d===+today;
-      const actKm = acts.filter(a=>a.date===iso(d)).reduce((t,a)=>t+a.km,0);
+      const dayActs = acts.filter(a=>a.date===iso(d));
+      const actKm = dayActs.reduce((t,a)=>t+a.km,0);
       return `<div class="dayrow ${isTodayLine?'today-line':''}">
         <div class="dn">${DLAB[i+1]}</div>
         <div class="lbl">${s2.label}${s2.detail?`<span class="det">${s2.detail}</span>`:''}</div>
-        <div class="km" style="color:${TYPE_META[s2.type].c}">${s2.km[0]===s2.km[1]?s2.km[0]:s2.km[0]+'–'+s2.km[1]} km${actKm?` · <span style="color:var(--teal)">${actKm.toFixed(1)}✓</span>`:''}</div>
+        <div class="km" style="color:${TYPE_META[s2.type].c}">${s2.km[0]===s2.km[1]?s2.km[0]:s2.km[0]+'–'+s2.km[1]} km${actKm?` · <span style="color:var(--teal)">${actKm.toFixed(1)}✓${dayActs.length>1?` (${dayActs.length})`:''}</span>`:''}</div>
       </div>`;
     }).join('');
     html += `<div class="wk ${isNow?'now':''}" id="wk${w.weeks_to_goal}">
