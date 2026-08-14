@@ -1,0 +1,1245 @@
+{
+  "meta": {
+    "name": "Pfitzinger 18/70 — Valencia Marathon",
+    "edition": "Advanced Marathoning, 3rd edition, 55–70 miles/week 18-week schedule",
+    "block_start": "2026-08-03",
+    "race_date": "2026-12-06",
+    "goal_mp_sec_per_km": 248,
+    "goal_time": "sub-3:00 (working MP 4:08/km)",
+    "notes": "Week keys are the book's weeks-to-goal numbering. Monday is always rest or cross-train and is omitted from day lists. Distances in km as printed in the book tables. Long runs moved to Saturday (Sat/Sun swapped) except race week, tune-up race weeks (6, 4, 2), and week 8 (Oxford Half is a Sunday)."
+  },
+  "blocks": [
+    {
+      "id": 1,
+      "name": "Endurance",
+      "weeks": [
+        17,
+        16,
+        15,
+        14,
+        13,
+        12
+      ]
+    },
+    {
+      "id": 2,
+      "name": "LT + Endurance",
+      "weeks": [
+        11,
+        10,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Race Preparation",
+      "weeks": [
+        6,
+        5,
+        4,
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Taper and Race",
+      "weeks": [
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "weeks": [
+    {
+      "weeks_to_goal": 17,
+      "block": 1,
+      "monday": "2026-08-03",
+      "recovery_week": false,
+      "volume_km": [
+        77,
+        92
+      ],
+      "volume_mi": [
+        48,
+        57
+      ],
+      "days": {
+        "tue": {
+          "type": "lt",
+          "label": "Lactate threshold",
+          "km": [
+            13,
+            14
+          ],
+          "detail": "20–25 min at LT pace"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            18,
+            19
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            13,
+            14
+          ]
+        },
+        "sat": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            21,
+            24
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 16,
+      "block": 1,
+      "monday": "2026-08-10",
+      "recovery_week": false,
+      "volume_km": [
+        79,
+        95
+      ],
+      "volume_mi": [
+        49,
+        59
+      ],
+      "days": {
+        "tue": {
+          "type": "ga_speed",
+          "label": "Gen aerobic + speed",
+          "km": [
+            11,
+            14
+          ],
+          "detail": "6 × 10 sec hill sprints + 8 × 100 m strides"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            18,
+            21
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            13,
+            14
+          ]
+        },
+        "sat": {
+          "type": "mp",
+          "label": "Marathon-pace run",
+          "km": [
+            24,
+            26
+          ],
+          "detail": "13 km at marathon pace"
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 15,
+      "block": 1,
+      "monday": "2026-08-17",
+      "recovery_week": false,
+      "volume_km": [
+        84,
+        98
+      ],
+      "volume_mi": [
+        52,
+        61
+      ],
+      "days": {
+        "tue": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            19,
+            23
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        },
+        "fri": {
+          "type": "lt",
+          "label": "Lactate threshold",
+          "km": [
+            14,
+            16
+          ],
+          "detail": "25–30 min at LT pace"
+        },
+        "sat": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 14,
+      "block": 1,
+      "monday": "2026-08-24",
+      "recovery_week": false,
+      "volume_km": [
+        90,
+        105
+      ],
+      "volume_mi": [
+        56,
+        65
+      ],
+      "days": {
+        "tue": {
+          "type": "ga_speed",
+          "label": "Gen aerobic + speed",
+          "km": [
+            13,
+            14
+          ],
+          "detail": "6 × 10 sec hill sprints + 8 × 100 m strides"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            21,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            16,
+            18
+          ]
+        },
+        "sat": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            27,
+            29
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 13,
+      "block": 1,
+      "monday": "2026-08-31",
+      "recovery_week": false,
+      "volume_km": [
+        89,
+        103
+      ],
+      "volume_mi": [
+        55,
+        64
+      ],
+      "days": {
+        "tue": {
+          "type": "lt",
+          "label": "Lactate threshold",
+          "km": [
+            13,
+            16
+          ],
+          "detail": "30–35 min at LT pace"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            21,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            10
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "sat": {
+          "type": "mp",
+          "label": "Marathon-pace run",
+          "km": [
+            27,
+            29
+          ],
+          "detail": "16 km at marathon pace"
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            8
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 12,
+      "block": 1,
+      "monday": "2026-09-07",
+      "recovery_week": true,
+      "volume_km": [
+        79,
+        89
+      ],
+      "volume_mi": [
+        49,
+        55
+      ],
+      "days": {
+        "tue": {
+          "type": "ga_speed",
+          "label": "Gen aerobic + speed",
+          "km": [
+            13,
+            14
+          ],
+          "detail": "10 × 100 m strides"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            18,
+            19
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            8
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            13,
+            14
+          ]
+        },
+        "sat": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            8
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 11,
+      "block": 2,
+      "monday": "2026-09-14",
+      "recovery_week": false,
+      "volume_km": [
+        101,
+        114
+      ],
+      "volume_mi": [
+        63,
+        71
+      ],
+      "days": {
+        "tue": {
+          "type": "lt",
+          "label": "Lactate threshold",
+          "km": [
+            14,
+            18
+          ],
+          "detail": "30–35 min at LT pace"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            8,
+            10
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "sat": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            31,
+            34
+          ]
+        },
+        "sun": {
+          "type": "ga_speed",
+          "label": "Gen aerobic + speed",
+          "km": [
+            11,
+            13
+          ],
+          "detail": "6 × 10 sec hill sprints + 10 × 100 m strides"
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 10,
+      "block": 2,
+      "monday": "2026-09-21",
+      "recovery_week": false,
+      "volume_km": [
+        98,
+        111
+      ],
+      "volume_mi": [
+        61,
+        69
+      ],
+      "days": {
+        "tue": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "fri": {
+          "type": "lt",
+          "label": "Lactate threshold",
+          "km": [
+            16,
+            19
+          ],
+          "detail": "35–40 min at LT pace"
+        },
+        "sat": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            31,
+            34
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 9,
+      "block": 2,
+      "monday": "2026-09-28",
+      "recovery_week": false,
+      "volume_km": [
+        95,
+        105
+      ],
+      "volume_mi": [
+        59,
+        65
+      ],
+      "days": {
+        "tue": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "sat": {
+          "type": "mp",
+          "label": "Marathon-pace run",
+          "km": [
+            29,
+            31
+          ],
+          "detail": "19 km at marathon pace"
+        },
+        "sun": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "6 × 100 m strides"
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 8,
+      "block": 2,
+      "monday": "2026-10-05",
+      "recovery_week": true,
+      "volume_km": [
+        84,
+        93
+      ],
+      "volume_mi": [
+        52,
+        58
+      ],
+      "days": {
+        "tue": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            13,
+            14
+          ]
+        },
+        "wed": {
+          "type": "vo2",
+          "label": "V̇O₂max",
+          "km": [
+            13,
+            14
+          ],
+          "detail": "7 × 600 m at 5K race pace; jog 50–90% interval time"
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            16,
+            18
+          ]
+        },
+        "sat": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "8 × 10 sec hill sprints + 8 × 100 m strides"
+        },
+        "sun": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ],
+          "note": "Oxford Half Marathon 11 Oct slots here as the tune-up substitute"
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 7,
+      "block": 2,
+      "monday": "2026-10-12",
+      "recovery_week": false,
+      "volume_km": [
+        103,
+        113
+      ],
+      "volume_mi": [
+        64,
+        70
+      ],
+      "days": {
+        "tue": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "fri": {
+          "type": "lt",
+          "label": "Lactate threshold",
+          "km": [
+            18,
+            19
+          ],
+          "detail": "35–45 min at LT pace"
+        },
+        "sat": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            34,
+            35
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 6,
+      "block": 3,
+      "monday": "2026-10-19",
+      "recovery_week": false,
+      "volume_km": [
+        92,
+        106
+      ],
+      "volume_mi": [
+        57,
+        66
+      ],
+      "days": {
+        "tue": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            16,
+            18
+          ]
+        },
+        "wed": {
+          "type": "vo2",
+          "label": "V̇O₂max",
+          "km": [
+            16,
+            18
+          ],
+          "detail": "5 × 600 m at 5K race pace; jog 50–90% interval time"
+        },
+        "thu": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "6 × 100 m strides"
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            8,
+            10
+          ]
+        },
+        "sat": {
+          "type": "race",
+          "label": "8K–15K tune-up race",
+          "km": [
+            16,
+            23
+          ],
+          "detail": "Total incl. warm-up/down"
+        },
+        "sun": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            26,
+            27
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 5,
+      "block": 3,
+      "monday": "2026-10-26",
+      "recovery_week": false,
+      "volume_km": [
+        101,
+        114
+      ],
+      "volume_mi": [
+        63,
+        71
+      ],
+      "days": {
+        "tue": {
+          "type": "vo2",
+          "label": "V̇O₂max",
+          "km": [
+            16,
+            19
+          ],
+          "detail": "6 × 1 km at 5K race pace; jog 50–90% interval time"
+        },
+        "wed": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "fri": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "sat": {
+          "type": "mp",
+          "label": "Marathon-pace run",
+          "km": [
+            31,
+            32
+          ],
+          "detail": "23 km at marathon pace — second decisive evidence gate"
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            8,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 4,
+      "block": 3,
+      "monday": "2026-11-02",
+      "recovery_week": false,
+      "volume_km": [
+        89,
+        103
+      ],
+      "volume_mi": [
+        55,
+        64
+      ],
+      "days": {
+        "tue": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "wed": {
+          "type": "vo2",
+          "label": "V̇O₂max",
+          "km": [
+            14,
+            16
+          ],
+          "detail": "5 × 600 m at 5K race pace; jog 50–90% interval time"
+        },
+        "thu": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "6 × 100 m strides"
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            8,
+            10
+          ]
+        },
+        "sat": {
+          "type": "race",
+          "label": "8K–15K tune-up race",
+          "km": [
+            16,
+            23
+          ],
+          "detail": "Total incl. warm-up/down"
+        },
+        "sun": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            26,
+            27
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 3,
+      "block": 3,
+      "monday": "2026-11-09",
+      "recovery_week": false,
+      "volume_km": [
+        101,
+        114
+      ],
+      "volume_mi": [
+        63,
+        71
+      ],
+      "days": {
+        "tue": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "wed": {
+          "type": "vo2",
+          "label": "V̇O₂max",
+          "km": [
+            18,
+            19
+          ],
+          "detail": "6 × 1 km at 5K race pace; jog 50–90% interval time"
+        },
+        "thu": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            23,
+            24
+          ]
+        },
+        "fri": {
+          "type": "ga_speed",
+          "label": "Gen aerobic + speed",
+          "km": [
+            13,
+            14
+          ],
+          "detail": "8 × 100 m strides"
+        },
+        "sat": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            31,
+            34
+          ]
+        },
+        "sun": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            8,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 2,
+      "block": 4,
+      "monday": "2026-11-16",
+      "recovery_week": false,
+      "volume_km": [
+        84,
+        95
+      ],
+      "volume_mi": [
+        52,
+        59
+      ],
+      "days": {
+        "tue": {
+          "type": "ga_speed",
+          "label": "Gen aerobic + speed",
+          "km": [
+            11,
+            13
+          ],
+          "detail": "6 × 10 sec hill sprints + 12 × 100 m strides"
+        },
+        "wed": {
+          "type": "ga",
+          "label": "General aerobic",
+          "km": [
+            14,
+            16
+          ]
+        },
+        "thu": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "6 × 100 m strides"
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            8
+          ]
+        },
+        "sat": {
+          "type": "race",
+          "label": "8K–10K tune-up race",
+          "km": [
+            16,
+            19
+          ],
+          "detail": "Total incl. warm-up/down"
+        },
+        "sun": {
+          "type": "long",
+          "label": "Long run",
+          "km": [
+            26,
+            27
+          ]
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 1,
+      "block": 4,
+      "monday": "2026-11-23",
+      "recovery_week": false,
+      "volume_km": [
+        64,
+        74
+      ],
+      "volume_mi": [
+        40,
+        46
+      ],
+      "days": {
+        "tue": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "8 × 100 m strides"
+        },
+        "wed": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            6,
+            8
+          ]
+        },
+        "thu": {
+          "type": "vo2",
+          "label": "V̇O₂max",
+          "km": [
+            13,
+            14
+          ],
+          "detail": "5 × 1 km at 5K race pace; jog 50–90% interval time"
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            8,
+            10
+          ]
+        },
+        "sat": {
+          "type": "mlr",
+          "label": "Medium-long run",
+          "km": [
+            19,
+            21
+          ]
+        },
+        "sun": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            8,
+            10
+          ],
+          "detail": "8 × 100 m strides"
+        }
+      }
+    },
+    {
+      "weeks_to_goal": 0,
+      "block": 4,
+      "monday": "2026-11-30",
+      "recovery_week": false,
+      "volume_km": [
+        34,
+        43
+      ],
+      "volume_mi": [
+        21,
+        27
+      ],
+      "days": {
+        "tue": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            10,
+            11
+          ]
+        },
+        "wed": {
+          "type": "dress",
+          "label": "Dress rehearsal",
+          "km": [
+            10,
+            11
+          ],
+          "detail": "3 km at marathon pace"
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            5,
+            6
+          ]
+        },
+        "fri": {
+          "type": "recovery_speed",
+          "label": "Recovery + speed",
+          "km": [
+            6,
+            8
+          ],
+          "detail": "6 × 100 m strides"
+        },
+        "sat": {
+          "type": "recovery",
+          "label": "Recovery",
+          "km": [
+            3,
+            6
+          ]
+        },
+        "sun": {
+          "type": "marathon",
+          "label": "VALENCIA MARATHON",
+          "km": [
+            42.2,
+            42.2
+          ],
+          "detail": "Goal: sub-3:00 — working MP 4:08/km"
+        }
+      }
+    }
+  ]
+}

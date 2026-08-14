@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14171c">
+<title>18/70 · Valencia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14171c; --panel:#1b1f26; --line:#2a3039;
+  --paper:#ede8dc; --dim:#8b93a1; --faint:#565e6b;
+  --orange:#ff6b35; --teal:#57b8a5; --amber:#e8b64c; --violet:#9d8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink); color:var(--paper);
+  font-family:'Barlow',system-ui,sans-serif;
+  font-size:15px; line-height:1.45;
+  padding:0 14px calc(28px + env(safe-area-inset-bottom));
+  max-width:680px; margin:0 auto;
+}
+.mono{font-family:'IBM Plex Mono',monospace}
+.cond{font-family:'Barlow Condensed',sans-serif}
+
+/* header */
+header{padding:22px 2px 14px; display:flex; align-items:baseline; justify-content:space-between; gap:12px}
+header h1{font-family:'Barlow Condensed';font-weight:700;font-size:30px;letter-spacing:.02em;line-height:1}
+header h1 span{color:var(--orange)}
+.countdown{text-align:right}
+.countdown .n{font-family:'IBM Plex Mono';font-weight:600;font-size:22px;line-height:1}
+.countdown .l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em}
+
+/* today card */
+.today{
+  background:var(--panel); border:1px solid var(--line); border-radius:14px;
+  padding:16px 16px 14px; margin-bottom:10px; position:relative; overflow:hidden;
+}
+.today::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--acc,var(--dim))}
+.today .eyebrow{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px}
+.today .session{font-family:'Barlow Condensed';font-weight:600;font-size:26px;line-height:1.1}
+.today .nums{font-family:'IBM Plex Mono';font-size:14px;color:var(--paper);margin-top:8px}
+.today .nums b{font-weight:600;color:var(--acc,var(--paper))}
+.today .detail{color:var(--dim);font-size:13.5px;margin-top:6px}
+
+/* week strip */
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:14px 0 22px}
+.strip .d{
+  background:var(--panel);border:1px solid var(--line);border-radius:9px;
+  padding:7px 2px 8px;text-align:center;min-height:58px;
+}
+.strip .d .dn{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.strip .d .tag{font-family:'IBM Plex Mono';font-size:11px;font-weight:600;margin-top:4px}
+.strip .d .km{font-family:'IBM Plex Mono';font-size:10px;color:var(--dim);margin-top:2px}
+.strip .d.now{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange)}
+.strip .d.done{opacity:.45}
+
+/* section titles */
+h2{font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:.16em;
+   text-transform:uppercase;color:var(--dim);margin:26px 0 10px;padding-left:2px}
+
+/* the tape */
+.tape{border-top:1px solid var(--line)}
+.blockhead{display:flex;justify-content:space-between;align-items:baseline;
+  padding:14px 2px 6px;color:var(--faint);font-size:11px;text-transform:uppercase;letter-spacing:.14em}
+.blockhead b{color:var(--dim);font-weight:600}
+.wk{border-bottom:1px solid var(--line)}
+.wkrow{display:grid;grid-template-columns:44px 1fr 92px;gap:10px;align-items:center;
+  padding:10px 2px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wk.now .wkrow{background:linear-gradient(90deg,rgba(255,107,53,.10),transparent 70%)}
+.wknum{text-align:center}
+.wknum .n{font-family:'Barlow Condensed';font-weight:700;font-size:22px;line-height:1}
+.wknum .l{font-size:9px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.wk.now .wknum .n{color:var(--orange)}
+.bars{position:relative;height:26px}
+.bar{position:absolute;left:0;top:4px;height:12px;border-radius:3px;
+  background:linear-gradient(90deg,#39414d, #4a5563);}
+.bar .hi{position:absolute;right:0;top:0;bottom:0;border-radius:0 3px 3px 0;background:#2e3540}
+.actualbar{position:absolute;left:0;bottom:1px;height:5px;border-radius:2px;background:var(--teal)}
+.actualbar.over{background:var(--amber)}
+.keydots{position:absolute;top:-3px;left:0;display:flex;gap:4px}
+.dot{width:7px;height:7px;border-radius:2px}
+.wkvol{text-align:right;font-family:'IBM Plex Mono';font-size:12px;color:var(--dim)}
+.wkvol .act{color:var(--teal);font-weight:600}
+.wkdays{display:none;padding:2px 2px 14px}
+.wk.open .wkdays{display:block}
+.dayrow{display:grid;grid-template-columns:38px 1fr auto;gap:10px;padding:6px 0;
+  border-top:1px dashed #232933;align-items:baseline}
+.dayrow .dn{font-family:'IBM Plex Mono';font-size:11px;color:var(--faint);text-transform:uppercase}
+.dayrow .lbl{font-size:14px}
+.dayrow .lbl .det{display:block;color:var(--dim);font-size:12.5px}
+.dayrow .km{font-family:'IBM Plex Mono';font-size:12.5px;white-space:nowrap}
+.dayrow.today-line .lbl{color:var(--orange);font-weight:600}
+
+/* pace table */
+.paces{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pr{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 14px;border-top:1px solid var(--line);background:var(--panel)}
+.pr:first-child{border-top:none}
+.pr .nm{font-weight:600}
+.pr .df{color:var(--dim);font-size:12.5px;display:block;font-weight:400}
+.pr .pc{font-family:'IBM Plex Mono';font-size:13.5px;font-weight:600;align-self:center;white-space:nowrap}
+footer{margin-top:26px;color:var(--faint);font-size:12px;line-height:1.5}
+a{color:var(--teal)}
+@media (prefers-reduced-motion:no-preference){
+  .today{animation:in .35s ease-out}
+  @keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>PFITZ 18/70<br><span>VALENCIA</span></h1>
+  <div class="countdown"><div class="n" id="cd">—</div><div class="l">days to race</div></div>
+</header>
+
+<div class="today" id="todaycard"></div>
+<div class="strip" id="strip"></div>
+
+<h2>The Block</h2>
+<div class="tape" id="tape"></div>
+
+<h2>Pace Bands · working MP 4:08/km</h2>
+<div class="paces" id="paces"></div>
+
+<footer id="foot">
+  Book schedule as written (3rd ed., 55–70 mpw). Monday is rest or cross-train every week.
+  Long &amp; medium-long runs start at the slow end of the band and finish at the fast end.
+  LT and V̇O₂max bands key off <em>current</em> fitness, not goal pace — recalibrate after each tune-up race.
+</footer>
+
+<script>
+const CONFIG = {
+  goalMP: 248,           // sec/km — 4:08 (working MP)
+  ltBand: [250, 262],    // current LT working band 4:10–4:22, HR-capped; retune at Oxford
+  vo2Band: [235, 245],   // current 5K pace band 3:55–4:05
+};
+
+const TYPE_META = {
+  rest:{c:'#565e6b',t:'REST'}, recovery:{c:'#565e6b',t:'REC'},
+  recovery_speed:{c:'#8b93a1',t:'REC+'}, ga:{c:'#9aa5b4',t:'GA'},
+  ga_speed:{c:'#9aa5b4',t:'GA+'}, mlr:{c:'#7d9bd1',t:'MLR'},
+  long:{c:'#9d8cff',t:'LONG'}, mp:{c:'#ff6b35',t:'MP'},
+  lt:{c:'#57b8a5',t:'LT'}, vo2:{c:'#e8b64c',t:'VO2'},
+  race:{c:'#ff6b35',t:'RACE'}, dress:{c:'#ff6b35',t:'MP'},
+  marathon:{c:'#ff6b35',t:'★'}
+};
+const DAYS = ['mon','tue','wed','thu','fri','sat','sun'];
+const DLAB = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+const fmtPace = s => `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;
+const band = (a,b) => `${fmtPace(a)}–${fmtPace(b)}/km`;
+const iso = d => d.toISOString().slice(0,10);
+const addDays = (d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+
+async function load(){
+  const plan = await (await fetch('plan.json')).json();
+  let acts = [];
+  try { acts = (await (await fetch('activities.json',{cache:'no-store'})).json()).activities || []; } catch(e){}
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const race = new Date(plan.meta.race_date+'T00:00:00');
+  document.getElementById('cd').textContent = Math.max(0, Math.round((race - today)/86400000));
+
+  // weekly actual km
+  const wkActual = {};
+  for (const a of acts){
+    const d = new Date(a.date+'T00:00:00');
+    const mon = addDays(d, -( (d.getDay()+6)%7 ));
+    const k = iso(mon);
+    wkActual[k] = (wkActual[k]||0) + a.km;
+  }
+
+  // find current week + day
+  let cur=null;
+  for (const w of plan.weeks){
+    const mon=new Date(w.monday+'T00:00:00');
+    if (today>=mon && today<addDays(mon,7)) cur=w;
+  }
+  const dayIdx = (today.getDay()+6)%7; // 0=Mon
+  const dayKey = DAYS[dayIdx];
+
+  // ---- today card
+  const tc = document.getElementById('todaycard');
+  if (cur){
+    const sess = dayKey==='mon' ? {type:'rest',label:'Rest or cross-train'} : cur.days[dayKey];
+    const m = TYPE_META[sess.type];
+    tc.style.setProperty('--acc', m.c);
+    const kmTxt = sess.km ? `<b>${sess.km[0]===sess.km[1]?sess.km[0]:sess.km[0]+'–'+sess.km[1]} km</b>` : '';
+    const pace = paceFor(sess.type);
+    tc.innerHTML = `
+      <div class="eyebrow">${DLAB[dayIdx]} · Week ${18-cur.weeks_to_goal} of 18 · ${cur.weeks_to_goal} to goal${cur.recovery_week?' · recovery week':''}</div>
+      <div class="session">${sess.label}</div>
+      <div class="nums">${kmTxt}${pace?` &nbsp;·&nbsp; ${pace}`:''}</div>
+      ${sess.detail?`<div class="detail">${sess.detail}</div>`:''}
+      ${sess.note?`<div class="detail">${sess.note}</div>`:''}`;
+  } else {
+    tc.innerHTML = `<div class="session">Block not in range</div>`;
+  }
+
+  // ---- week strip
+  if (cur){
+    const s = document.getElementById('strip');
+    // map actual km per date
+    const byDate={}; for(const a of acts){byDate[a.date]=(byDate[a.date]||0)+a.km;}
+    s.innerHTML = DAYS.map((k,i)=>{
+      const d = addDays(new Date(cur.monday+'T00:00:00'), i);
+      const sess = k==='mon'?{type:'rest'}:cur.days[k];
+      const m = TYPE_META[sess.type];
+      const done = d<today, now = +d===+today;
+      const act = byDate[iso(d)];
+      return `<div class="d ${now?'now':''} ${done?'done':''}">
+        <div class="dn">${DLAB[i]}</div>
+        <div class="tag" style="color:${m.c}">${m.t}</div>
+        <div class="km">${act?act.toFixed(0)+'✓':(sess.km?sess.km[0]+'–'+sess.km[1]:'—')}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // ---- tape
+  const tape = document.getElementById('tape');
+  const maxVol = Math.max(...plan.weeks.map(w=>w.volume_km[1]));
+  let html='', lastBlock=0;
+  for (const w of plan.weeks){
+    if (w.block!==lastBlock){
+      const b = plan.blocks.find(b=>b.id===w.block);
+      html += `<div class="blockhead"><b>Block ${b.id} — ${b.name}</b><span>${b.weeks.length} wks</span></div>`;
+      lastBlock = w.block;
+    }
+    const mon = new Date(w.monday+'T00:00:00');
+    const isNow = cur && w.weeks_to_goal===cur.weeks_to_goal;
+    const lo = w.volume_km[0]/maxVol*100, hi = w.volume_km[1]/maxVol*100;
+    const act = wkActual[w.monday];
+    const actW = act ? Math.min(act/maxVol*100, 100) : 0;
+    const keys = DAYS.slice(1).map(k=>w.days[k]).filter(s=>['lt','vo2','mp','long','race','marathon'].includes(s.type));
+    const dots = keys.map(s=>`<span class="dot" style="background:${TYPE_META[s.type].c}"></span>`).join('');
+    const dayrows = DAYS.slice(1).map((k,i)=>{
+      const s2 = w.days[k]; const d = addDays(mon, i+1);
+      const isTodayLine = +d===+today;
+      const actKm = acts.filter(a=>a.date===iso(d)).reduce((t,a)=>t+a.km,0);
+      return `<div class="dayrow ${isTodayLine?'today-line':''}">
+        <div class="dn">${DLAB[i+1]}</div>
+        <div class="lbl">${s2.label}${s2.detail?`<span class="det">${s2.detail}</span>`:''}</div>
+        <div class="km" style="color:${TYPE_META[s2.type].c}">${s2.km[0]===s2.km[1]?s2.km[0]:s2.km[0]+'–'+s2.km[1]} km${actKm?` · <span style="color:var(--teal)">${actKm.toFixed(1)}✓</span>`:''}</div>
+      </div>`;
+    }).join('');
+    html += `<div class="wk ${isNow?'now':''}" id="wk${w.weeks_to_goal}">
+      <div class="wkrow" onclick="this.parentElement.classList.toggle('open')">
+        <div class="wknum"><div class="n">${18-w.weeks_to_goal}</div><div class="l">${mon.toLocaleDateString('en-GB',{day:'numeric',month:'short'})}</div></div>
+        <div class="bars">
+          <div class="keydots">${dots}</div>
+          <div class="bar" style="width:${hi}%"><div class="hi" style="width:${(hi-lo)/hi*100}%"></div></div>
+          ${act?`<div class="actualbar ${act>w.volume_km[1]?'over':''}" style="width:${actW}%"></div>`:''}
+        </div>
+        <div class="wkvol">${act?`<span class="act">${act.toFixed(0)}</span> / `:''}${w.volume_km[0]}–${w.volume_km[1]}</div>
+      </div>
+      <div class="wkdays">${dayrows}</div>
+    </div>`;
+  }
+  tape.innerHTML = html;
+  if (cur) document.getElementById('wk'+cur.weeks_to_goal)?.classList.add('open');
+
+  // ---- paces
+  const mp = CONFIG.goalMP;
+  const rows = [
+    ['Recovery','Very easy; slower than GA, HR below ~76% max', band(mp*1.25, mp*1.35)],
+    ['General aerobic','15–25% slower than goal MP', band(mp*1.15, mp*1.25)],
+    ['Medium-long / Long','10–20% slower than goal MP; progress slow → fast', band(mp*1.10, mp*1.20)],
+    ['Marathon pace','Goal race pace', band(mp-1, mp+1)],
+    ['Lactate threshold','15K–HM race effort (~30–40 min sustainable). Current band, HR-capped', band(CONFIG.ltBand[0], CONFIG.ltBand[1])],
+    ['V̇O₂max','Current 5K race pace', band(CONFIG.vo2Band[0], CONFIG.vo2Band[1])],
+    ['Strides / hill sprints','Fast &amp; relaxed, ~mile effort; full recovery','n/a'],
+  ];
+  document.getElementById('paces').innerHTML = rows.map(r=>`
+    <div class="pr"><div class="nm">${r[0]}<span class="df">${r[1]}</span></div><div class="pc">${r[2]}</div></div>`).join('');
+
+  function paceFor(t){
+    switch(t){
+      case 'recovery': case 'recovery_speed': return band(mp*1.25,mp*1.35);
+      case 'ga': case 'ga_speed': return band(mp*1.15,mp*1.25);
+      case 'mlr': case 'long': return band(mp*1.10,mp*1.20);
+      case 'mp': case 'dress': case 'marathon': return band(mp-1,mp+1);
+      case 'lt': return band(CONFIG.ltBand[0],CONFIG.ltBand[1]);
+      case 'vo2': return band(CONFIG.vo2Band[0],CONFIG.vo2Band[1]);
+      default: return '';
+    }
+  }
+}
+load();
+</script>
+</body>
+</html>
