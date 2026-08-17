@@ -4,22 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#faf9f6">
-<title>18/70 · Valencia</title>
+<title>18/55 · Valencia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#faf9f6;
-  --ink:#004d7c;
-  --ink-90:rgba(0,77,124,.90);
-  --ink-60:rgba(0,77,124,.60);
-  --ink-42:rgba(0,77,124,.42);
-  --ink-26:rgba(0,77,124,.26);
-  --rule:rgba(0,77,124,.20);
-  --rule-soft:rgba(0,77,124,.10);
-  --wash:rgba(0,77,124,.045);
-  --alert:#b0521c;
+  /* neutral base */
+  --ink:#2b2e33;
+  --ink-90:rgba(43,46,51,.90);
+  --ink-60:rgba(43,46,51,.58);
+  --ink-42:rgba(43,46,51,.40);
+  --ink-26:rgba(43,46,51,.22);
+  --rule:rgba(43,46,51,.18);
+  --rule-soft:rgba(43,46,51,.10);
+  --wash:rgba(43,46,51,.038);
+  /* run-type palette — blue is the endurance signature */
+  --c-rest:#a7abb1;
+  --c-rec:#8d97a1;
+  --c-ga:#5f7d92;
+  --c-mlr:#3a7ca5;
+  --c-long:#004d7c;
+  --c-mp:#b4522e;
+  --c-lt:#2f7d64;
+  --c-vo2:#a8781f;
+  --c-race:#8c2f2f;
+  --alert:#b4522e;
+  --blue:#004d7c;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -79,16 +91,18 @@ h2{font-size:10.5px; font-weight:600; letter-spacing:.15em; text-transform:upper
 .ptrack{position:relative; height:5px; background:var(--ink-26); margin:15px 0 5px}
 .ptrack .zone{position:absolute; top:-4px; bottom:-4px; border-left:1px solid var(--ink-42);
   border-right:1px solid var(--ink-42)}
-.ptrack .fill{position:absolute; left:0; top:0; bottom:0; background:var(--ink)}
+.ptrack .fill{position:absolute; left:0; top:0; bottom:0; background:var(--blue)}
 .ptrack .fill.over{background:var(--alert)}
 .ptick{display:flex; justify-content:space-between; font-family:'IBM Plex Mono';
   font-size:9.5px; color:var(--ink-42)}
 .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:15px}
 .chip{font-size:11px; padding:4px 9px; border:1px solid var(--rule); color:var(--ink-60);
   white-space:nowrap; letter-spacing:.01em}
-.chip.done{border-color:var(--ink); color:var(--ink); font-weight:500}
+.chip.done{border-color:var(--c,var(--ink)); color:var(--c,var(--ink)); font-weight:500;
+  background:color-mix(in srgb, var(--c,var(--ink)) 8%, transparent)}
 .chip.done::before{content:"✓ "}
-.chip.next{border-color:var(--ink); color:var(--ink); background:var(--wash); font-weight:500}
+.chip.next{border-color:var(--c,var(--ink)); color:var(--c,var(--ink)); font-weight:500;
+  box-shadow:inset 0 -2px 0 var(--c,var(--ink))}
 
 /* the tape */
 .tape{}
@@ -107,12 +121,12 @@ h2{font-size:10.5px; font-weight:600; letter-spacing:.15em; text-transform:upper
 .bar{position:absolute; left:0; top:7px; height:6px; background:var(--ink-26)}
 .bar .hi{position:absolute; right:0; top:0; bottom:0; background:transparent;
   border-left:1px solid var(--ink-42)}
-.actualbar{position:absolute; left:0; top:7px; height:6px; background:var(--ink)}
+.actualbar{position:absolute; left:0; top:7px; height:6px; background:var(--blue)}
 .actualbar.over{background:var(--alert)}
 .keydots{position:absolute; top:0; left:0; display:flex; gap:3px}
 .dot{width:5px; height:5px; border-radius:50%}
 .wkvol{text-align:right; font-family:'IBM Plex Mono'; font-size:11.5px; color:var(--ink-42)}
-.wkvol .act{color:var(--ink); font-weight:500}
+.wkvol .act{color:var(--blue); font-weight:600}
 .expand{font-size:15px; color:var(--ink-42); text-align:right; line-height:1}
 .wk.open .expand{color:var(--ink)}
 .wkdays{display:none; padding:0 0 16px}
@@ -147,11 +161,12 @@ h2{font-size:10.5px; font-weight:600; letter-spacing:.15em; text-transform:upper
 .splits.open{display:block}
 .sbars{display:flex; align-items:flex-end; gap:2px; height:46px; position:relative;
   border-bottom:1px solid var(--rule)}
-.sbars .bandzone{position:absolute; left:0; right:0; background:rgba(0,77,124,.07);
+.sbars .bandzone{position:absolute; left:0; right:0; background:rgba(43,46,51,.05);
+  background:color-mix(in srgb, var(--c,var(--ink)) 9%, transparent);
   border-top:1px dashed var(--ink-26); border-bottom:1px dashed var(--ink-26)}
 .sb{flex:1; min-width:3px; position:relative; z-index:1}
-.sb.inb{background:var(--ink)}
-.sb.fast{background:var(--alert)}
+.sb.inb{background:var(--c,var(--ink))}
+.sb.fast{background:var(--c-mp)}
 .sb.slow{background:var(--ink-26)}
 .sb.part{opacity:.35}
 .slegend{display:flex; justify-content:space-between; gap:10px;
@@ -173,15 +188,16 @@ h2{font-size:10.5px; font-weight:600; letter-spacing:.15em; text-transform:upper
 .scale .mk span{position:absolute; top:13px; left:50%; transform:translateX(-50%);
   font-size:9px; color:var(--ink-42); white-space:nowrap; letter-spacing:.02em}
 .scale .now{position:absolute; top:3px; width:11px; height:11px; border-radius:50%;
-  background:var(--ink); transform:translateX(-50%); border:2.5px solid var(--bg)}
+  background:var(--blue); transform:translateX(-50%); border:2.5px solid var(--bg)}
 
 .wkdelta{font-size:9.5px; color:var(--ink-42); margin-top:2px}
 .wkdelta.up{color:var(--alert)}
 
 /* pace table */
 .paces{}
-.pr{display:grid; grid-template-columns:1fr auto; gap:14px; padding:12px 0;
+.pr{display:grid; grid-template-columns:3px 1fr auto; gap:14px; padding:12px 0;
   border-bottom:1px solid var(--rule-soft)}
+.pr .sw{background:var(--c,var(--ink-26)); border-radius:2px}
 .pr:last-child{border-bottom:none}
 .pr .nm{font-size:14px; font-weight:500; letter-spacing:-.005em}
 .pr .df{color:var(--ink-60); font-size:12.5px; display:block; font-weight:400; margin-top:2px}
@@ -202,7 +218,7 @@ a{color:var(--ink)}
 <body>
 <header>
   <div>
-    <h1>Pfitzinger 18/70</h1>
+    <h1>Pfitzinger 18/55</h1>
     <div class="sub">Valencia Marathon, 6 December 2026. Book schedule as written,<br>with actuals synced from Strava.</div>
   </div>
   <div class="countdown"><div class="n" id="cd">—</div><div class="l">days to race</div></div>
@@ -223,7 +239,7 @@ a{color:var(--ink)}
 <div class="paces" id="paces"></div>
 
 <footer id="foot">
-  Book schedule as written (3rd ed., 55–70 mpw). Monday is rest or cross-train every week.
+  Book schedule as written (3rd ed., up to 55 mpw, pp. 186–189), long runs moved to Saturday. Monday is rest or cross-train every week.
   Long &amp; medium-long runs start at the slow end of the band and finish at the fast end.
   LT and V̇O₂max bands key off <em>current</em> fitness, not goal pace — recalibrate after each tune-up race.
 </footer>
@@ -236,13 +252,13 @@ const CONFIG = {
 };
 
 const TYPE_META = {
-  rest:{c:'var(--ink-26)',t:'Rest',q:0}, recovery:{c:'var(--ink-42)',t:'Rec',q:0},
-  recovery_speed:{c:'var(--ink-42)',t:'Rec+',q:0}, ga:{c:'var(--ink-60)',t:'GA',q:0},
-  ga_speed:{c:'var(--ink-60)',t:'GA+',q:0}, mlr:{c:'var(--ink-90)',t:'MLR',q:0},
-  long:{c:'var(--ink)',t:'Long',q:1}, mp:{c:'var(--ink)',t:'MP',q:1},
-  lt:{c:'var(--ink)',t:'LT',q:1}, vo2:{c:'var(--ink)',t:'VO₂',q:1},
-  race:{c:'var(--alert)',t:'Race',q:1}, dress:{c:'var(--ink)',t:'MP',q:1},
-  marathon:{c:'var(--alert)',t:'★',q:1}
+  rest:{c:'var(--c-rest)',t:'Rest',q:0}, recovery:{c:'var(--c-rec)',t:'Rec',q:0},
+  recovery_speed:{c:'var(--c-rec)',t:'Rec+',q:0}, ga:{c:'var(--c-ga)',t:'GA',q:0},
+  ga_speed:{c:'var(--c-ga)',t:'GA+',q:0}, mlr:{c:'var(--c-mlr)',t:'MLR',q:0},
+  long:{c:'var(--c-long)',t:'Long',q:1}, mp:{c:'var(--c-mp)',t:'MP',q:1},
+  lt:{c:'var(--c-lt)',t:'LT',q:1}, vo2:{c:'var(--c-vo2)',t:'VO₂',q:1},
+  race:{c:'var(--c-race)',t:'Race',q:1}, dress:{c:'var(--c-mp)',t:'MP',q:1},
+  marathon:{c:'var(--c-race)',t:'★',q:1}
 };
 const DAYS = ['mon','tue','wed','thu','fri','sat','sun'];
 const DLAB = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
@@ -372,7 +388,7 @@ async function load(){
       const hit = ran >= s.km[0]*0.6;
       const isNext = !hit && d>=today;
       const short = {lt:'LT',vo2:'VO₂max',mp:'MP run',race:'Tune-up',marathon:'RACE',dress:'Dress reh.'}[s.type];
-      return `<span class="chip ${hit?'done':''} ${isNext?'next':''}">${DLAB[i+1]} ${short}</span>`;
+      return `<span class="chip ${hit?'done':''} ${isNext?'next':''}" style="--c:${TYPE_META[s.type].c}">${DLAB[i+1]} ${short}</span>`;
     }).join('');
 
     document.getElementById('weekpanel').innerHTML = `
@@ -532,16 +548,18 @@ async function load(){
   // ---- paces
   const mp = CONFIG.goalMP;
   const rows = [
-    ['Recovery','Very easy; slower than GA, HR below ~76% max', band(mp*1.25, mp*1.35)],
-    ['General aerobic','15–25% slower than goal MP', band(mp*1.15, mp*1.25)],
-    ['Medium-long / Long','10–20% slower than goal MP; progress slow → fast', band(mp*1.10, mp*1.20)],
-    ['Marathon pace','Goal race pace', band(mp-1, mp+1)],
-    ['Lactate threshold','15K–HM race effort (~30–40 min sustainable). Current band, HR-capped', band(CONFIG.ltBand[0], CONFIG.ltBand[1])],
-    ['V̇O₂max','Current 5K race pace', band(CONFIG.vo2Band[0], CONFIG.vo2Band[1])],
-    ['Strides / hill sprints','Fast &amp; relaxed, ~mile effort; full recovery','n/a'],
+    ['Recovery','Very easy; slower than GA, HR below ~76% max', band(mp*1.25, mp*1.35), 'recovery'],
+    ['General aerobic','15–25% slower than goal MP', band(mp*1.15, mp*1.25), 'ga'],
+    ['Medium-long run','10–20% slower than goal MP', band(mp*1.10, mp*1.20), 'mlr'],
+    ['Long run','10–20% slower; progress slow → fast', band(mp*1.10, mp*1.20), 'long'],
+    ['Marathon pace','Goal race pace, HR ceiling 170', band(mp-1, mp+1), 'mp'],
+    ['Lactate threshold','15K–HM race effort (~30–40 min sustainable). Current band', band(CONFIG.ltBand[0], CONFIG.ltBand[1]), 'lt'],
+    ['V̇O₂max','Current 5K race pace', band(CONFIG.vo2Band[0], CONFIG.vo2Band[1]), 'vo2'],
+    ['Tune-up race','8K–15K, plus warm-up and cool-down','—', 'race'],
+    ['Strides / hill sprints','Fast &amp; relaxed, ~mile effort; full recovery','—'],
   ];
   document.getElementById('paces').innerHTML = rows.map(r=>`
-    <div class="pr"><div class="nm">${r[0]}<span class="df">${r[1]}</span></div><div class="pc">${r[2]}</div></div>`).join('');
+    <div class="pr" style="--c:${r[3]?TYPE_META[r[3]].c:'var(--ink-26)'}"><div class="sw"></div><div class="nm">${r[0]}<span class="df">${r[1]}</span></div><div class="pc">${r[2]}</div></div>`).join('');
 
   function splitChart(a, planType){
     const sp = a.splits.map(([d,t,hr])=>({d,t,hr,pace:t/(d/1000),part:d<950}));
@@ -588,7 +606,7 @@ async function load(){
       const col = dp>8 ? 'var(--alert)' : 'var(--ink-60)';
       dec = ` · decoupling <b style="color:${col}">${dp>=0?'':'−'}${Math.abs(dp).toFixed(1)}%</b>`;
     }
-    return `<div class="splits">
+    return `<div class="splits" style="--c:${(TYPE_META[planType]||TYPE_META.rest).c}">
       <div class="sbars">${zone}${bars}</div>
       <div class="slegend">
         <span>${sp.length} km · fastest <b>${fastest}</b> · slowest <b>${slowest}</b>${dec}</span>
