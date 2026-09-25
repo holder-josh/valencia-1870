@@ -1,77 +1,85 @@
-# Valencia 1870 - training dashboard
+# Valencia / 2026
 
-This package replaces the previous simple page with the revised 11-week Valencia dashboard.
+Josh's static training dashboard for the 6 December 2026 marathon. Light design, six views, no build step, no frontend credentials or external CDN. The supplied Strava exporter and 10-minute schedule are preserved.
 
-## What is included
+## Replace the GitHub project
 
-- Revised 23 September 2026 plan in `docs/plan_revised.json` (the older Pfitz plan remains as `docs/plan.json` for reference).
-- Plan, Activities, Volume and Fitness views.
-- Planned-vs-actual matching by date, expandable weeks, calendar, weekly mileage and lap/split inspection.
-- Editable quality sessions stored in browser localStorage.
-- 17 source workout JSON files in `docs/workouts-planned/`.
-- Garmin FIT export from the workout editor using Garmin's official JavaScript FIT SDK, loaded from jsDelivr when online.
-- Existing detailed Strava export pipeline and 10-minute GitHub Action retained.
+1. Unzip this folder. Copy its **contents** into your existing repository, merging/replacing files of the same name. Include `.github/workflows/sync.yml` (Cmd + Shift + . reveals hidden folders in Finder).
+2. **Preserve existing `docs/workouts.json`, `docs/streams/`, generated CSVs, `docs/CNAME` and repository secrets** if your repository already has them. These generated files are not in this ZIP. Do not delete them by replacing the entire `docs` directory with an empty copy. GitHub secrets live in repository settings, not these files.
+3. Commit the changes. In **Settings → Pages → Build and deployment**, select **GitHub Actions** (same as the supplied project's instructions).
+4. Run **Actions → Sync Strava → Run workflow**. The existing Pages URL will serve the new dashboard after both `sync` and `deploy` succeed. The workflow tests the dashboard calculations and FIT exports before pulling Strava.
 
-## Install
+Do not upload the ZIP itself as your website. Upload its extracted project contents. No `npm install` is required in the repository: the Garmin SDK is included.
 
-Replace the contents of your current GitHub repository with the contents of this folder, preserving your existing Strava repository secrets. Then run **Actions → Sync Strava → Run workflow** once. GitHub Pages should use **GitHub Actions** as its source.
+## Preview before replacing
 
-The dashboard tries `workouts.json` first and falls back to `activities.json` while detailed history is still filling.
+- Open **PREVIEW.html** directly from the unzipped folder. It contains the real supplied snapshots and works without a local server. FIT export and edits work; it does not fetch live data. The PDF link works relative to the project folder.
+- For the exact website, run `python3 -m http.server 8000 --directory docs` from this folder, then open `http://localhost:8000`.
+- `docs/index.html` is the deployed website. Keep all its companion files under `docs`.
 
----
+## Views
 
-# Pfitz 18/70 — Valencia 2026
+- **Overview:** current week, due-through-yesterday distance, four-week volume, recent runs, calendar and next quality session.
+- **Training plan:** the complete 11-week PDF transcription, including travel, hike, optional double, conditional goal-pace blocks and taper. Filter upcoming / quality, inspect any day, edit steps and export FIT.
+- **Activities:** imported history plus Strava feed; search / sport filters; moving vs elapsed pace, nonmoving time, splits, recorded laps, plan-step comparison, distance-block inspection, stream efficiency and notes.
+- **Volume:** planned/actual weekly bars, daily differences, distance-weighted pace, running/cycling/other hours and prior-volume comparison.
+- **Fitness:** strict pace/HR efficiency trend, actual imported Runalyze estimates, goal-pace progression, four transparent sub-three evidence checks and a race-equivalent calculator.
+- **Data & settings:** timezone / HRmax, feed status, backup/restore and all definitions.
 
-Your existing dashboard, now with detailed Strava workout exports and a sync scheduled every 10 minutes (at :07, :17, :27, :37, :47 and :57 UTC). GitHub schedules can run late; this is not real-time delivery.
+## What is real, estimated or missing
 
-## Install this update
+- Source plan: `docs/training-plan.pdf`, **revised 23 September 2026**, recovered from the Marathon Training Plan conversation. Its 77 days plus one optional PM run are in `docs/plan.json`.
+- The PDF has 24 September as easy. The later 2 × 3 km threshold discussion is a selectable revision, not silently substituted into the PDF baseline.
+- Time-based sessions use the midpoint of target pace to estimate easy remainder. The editor recalculates totals when you extend a warm-up. Stride recoveries default to 75 seconds within the PDF's 60–90s range. Open steps end on the lap button and have unknown distance. These implementation defaults are visible in the app.
+- `docs/activities.json`: 34 real runs from the supplied project, through 24 September. This older format lacks elapsed time; unknown values remain blank.
+- `docs/history.json`: 567 real activities from the supplied Runalyze CSV through 3 September 2026. Imported fields are limited to activity metrics. No notes, coordinates, hashes, account IDs or original-file references were added. Runalyze `s` is active/timer duration and may differ from Strava moving time. Historical sport IDs are specific to this account.
+- Same-date, near-time (under 12 minutes, accounting for the legacy UTC clock text), near-distance (within 2% / 100 m) records merge; Strava takes precedence and the Runalyze estimates remain attached. Different runs on the same day remain separate.
+- The ZIP had no detailed `workouts.json`. The app falls back to its summary snapshot until your authenticated workflow creates that file. No live Strava API call was made here. Recent cycling / hiking beyond the history cutoff are incomplete until the detailed feed arrives.
+- Missing elapsed time / HR / streams stays unavailable. Clean-stream metrics require 20 usable minutes. The aerobic index is not VO₂max; imported Runalyze estimates are identified separately. Weekly pace is not used to predict race performance.
+- Sub-three checks are explicit dashboard heuristics and self-reported goal-work evidence, not a validated probability. Log a controlled continuous G block and subsequent recovery under an activity's Notes.
+- Automatic date matches are candidates. Edit the planned warm-up if it differs, and manually link a moved workout. Recorded laps are not assumed to be planned steps. Without streams, recorded-lap overlaps are preferred, with split overlaps as fallback. Time steps use observed lap/split durations to locate boundaries; partial overlaps remain estimates.
 
-1. Copy the contents of this folder into your existing repository, including `.github/workflows/sync.yml`, `scripts/`, and `tests/`. Keep your existing repository secrets. The dashboard and training plan are unchanged.
-2. In **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**. This workflow now publishes `/docs` explicitly, because commits created using `GITHUB_TOKEN` do not trigger a branch-based Pages build.
-3. In **Actions → Sync Strava → Run workflow**, run it on the default branch. Check that both `sync` and `deploy` succeed.
-4. Open your existing Pages URL with `/workouts.json` appended. Give that URL to ChatGPT when asking about training. For detailed within-run analysis, also give the activity's linked `streams_file` URL. Public availability alone does not make ChatGPT automatically fetch the URL on every future conversation.
+## Garmin FIT workouts
 
-The uploaded project has no credentials. No live Strava request has been run to produce new data in this copy. The first workflow run creates the exports. History fills in over successive runs, newest first; `sync.pending_details` and `sync.pending_streams` show progress.
+Open a session → **Edit workout & export FIT**. Change warm-up/cool-down, pace, distance/time/open steps, add work/recovery pairs, reorder and remove steps. Save edits if they should change the dashboard; downloading alone uses the draft without saving it.
 
-## Files available on your website
+The default FIT alarm widens each printed pace range by ±5 seconds/km. Choose Printed range / ±5 / ±10 / ±15. This changes watch alerts only, not the printed targets or in-range execution metric.
 
-| Path relative to your existing Pages URL | Contents |
-| --- | --- |
-| `workouts.json` | All activity types; detailed workout metadata, full recorded laps, kilometre/mile splits, fetch status, and links to streams |
-| `workouts.csv` | One activity per row, including timing, distance, HR, cadence, power, elevation, device, description and workout type where available |
-| `workout-laps.csv` | One row per recorded lap or split; `kind` distinguishes laps, kilometre splits and mile splits; don't sum across these kinds |
-| `streams/<activity-id>.json` | Strava's recorded time, distance, speed, HR, cadence, power, altitude, grade, temperature and moving-state arrays, where available |
-| `activities.json` | Compatible compact run data used by the original dashboard |
+The official Garmin SDK v21.217.0 encodes each workout and immediately decodes it to check CRC and step count. Tests also verify distance/time scaling, pace-to-speed conversion and all planned running sessions. Work/recovery repetitions are expanded into individual steps (no recovery after the final rep). Maximum 50 steps.
 
-Exports start at 28 July 2026, matching the original project. All activity types are included so rides and hikes can be considered alongside running. Optional `STRAVA_FETCH_FROM` environment variable accepts an ISO timestamp with timezone, e.g. `2026-01-01T00:00:00+00:00`.
+Connect the Fēnix by USB and copy a downloaded `.fit` file to **GARMIN/NewFiles**. Safely disconnect, then find it under running workouts. On a Mac, MTP access may require a compatible transfer app. **A physical watch transfer has not been tested. Start with one threshold session.** The Garmin Connect activity uploader is not an importer for structured workout FIT files. These are undated workout prescriptions with a date in the name, not automatic calendar scheduling.
 
-## How to interpret the data
+Pre-generated quality FITs are provided in `garmin-workouts/`, with the PDF baseline and default ±5s alarms. Conditional sessions stay conditional; using an export does not mean you should automatically advance the goal-pace progression.
 
-- Distances are metres, durations seconds, speeds metres/second, pace seconds/km, HR bpm, power watts. Original cadence values are retained without doubling or conversion.
-- `elapsed_time` is total start-to-finish time, including stops; `moving_time` is Strava's moving time. Both have separate calculated pace fields using unrounded distance.
-- `nonmoving_time_s` is elapsed minus moving time. It is not an exact reconstruction of the watch's pause button history.
-- Laps include original stream indices and timestamps where provided. These are recorded laps, not guaranteed Garmin planned workout steps. Warm-up, effort and recovery labels are not invented. Strava's numeric `workout_type` is preserved as metadata, not interpreted as an interval prescription.
-- JSON absent fields and CSV blank cells mean unavailable, not zero. An activity can have no HR, no power, no laps or no streams.
-- Streams retain their original `data`, `resolution`, `original_size` and `series_type`. Use the time stream's offsets; do not assume exactly one sample per second. Inspect array lengths before joining them.
-- No GPS coordinates, route maps, athlete profiles or OAuth credentials are exported. Activity names, descriptions and workout metrics are public, including private activities accessible to the token. To publish only public activities, restrict the app's OAuth scope to `activity:read` and reauthorize.
+## Edits, notes and backup
 
-## Caching, freshness and errors
+Changes are stored in localStorage on this browser/origin. They do not write back to GitHub or Strava. Use **Backup** to transfer them between devices. **Export edited plan** downloads a new `plan.json` you can commit to `docs/plan.json` for a shared baseline. Preserve a browser backup before changing the baseline. Different browsers and PREVIEW.html have separate storage origins.
 
-The full activity summary list is refreshed each run. Missing detail/streams are fetched newest first. Successfully fetched details and streams refresh daily for activities from the last seven days, and weekly for older activities, subject to the request budget. Refreshing summaries does not imply every detail was refreshed: check each activity's `detail_fetched_at` and `streams_fetched_at`.
+To update Runalyze history:
 
-There is a hard budget of 5 read requests per run, including pagination (at most 720 reads across 144 scheduled runs/day). Response rate-limit headers can stop requests sooner. Manual runs and other apps using the same credentials consume additional capacity. HTTP 429 ends enrichment cleanly and retains pending/cached data; later runs continue. Auth failures fail the workflow rather than publishing an empty history. A failed/incomplete summary pagination does not replace the public index. A successful complete listing removes exports of deleted or out-of-window activities on the next run; previously committed data remains in Git history.
+```bash
+python3 scripts/import_runalyze.py /path/to/new-runalyze-export.csv
+```
 
-The existing `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, and `STRAVA_REFRESH_TOKEN` secrets are required. The token needs `activity:read` or `activity:read_all` depending on the intended activity visibility. As in the original project, this workflow does not automatically write GitHub secrets. If Strava rotates your refresh token, the job emits a warning; obtain/save the current token via your OAuth setup and update `STRAVA_REFRESH_TOKEN`. Tokens are never printed or committed.
+Commit the updated `docs/history.json`. The importer uses only the Python standard library; raw CSVs should stay outside the public website. `scripts/build_plan.py` reproduces the original PDF transcription and will overwrite `docs/plan.json`; run it only to restore that baseline.
 
-## Validation
+## Data feed
 
-Run `python -m unittest discover -s tests -v` with Python 3.12. Tests use synthetic API responses and temporary output folders. They check distinct moving/elapsed pace, lap fields, legacy dashboard compatibility, caching, absent streams, budget interruption, deletion cleanup, and auth failure handling. The workflow runs these tests before syncing.
+Same repository secrets: `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN`. Exporter starts 28 July 2026, includes all activity types, reads at most five API endpoints per workflow run and progressively fills detailed history. Existing rate-limit handling, token handling and deletion behaviour are retained. See `EXPORTER.md` for original feed documentation.
 
-## References
+The feed already requests time, distance, speed, HR, cadence, watts, altitude, grade, temperature and moving state. No additional Strava scope/field is needed for this first pass. HRV, sleep, Garmin VO₂max trend and subjective recovery are not available from these Strava endpoints; the app does not invent them.
 
-- [Strava API reference](https://developers.strava.com/docs/reference/)
-- [Strava rate limits](https://developers.strava.com/docs/rate-limits/)
-- [Strava authentication and refresh tokens](https://developers.strava.com/docs/authentication/)
-- [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+## Verification
 
-The plan is in `docs/plan.json`; dashboard settings remain in `docs/index.html`.
+```bash
+npm test
+python3 -m unittest discover -s tests -v
+```
+
+Tests cover weekly totals, optional mileage, weighted pace, duplicate imports, stops, missing fields, mixed distance/time boundaries and all FIT exports. `tests/browser-smoke.cjs` is an optional Playwright interaction test (requires Playwright / Chromium, not needed to deploy).
+
+## Files
+
+`docs/` is the whole static site. `docs/js/metrics.js` holds calculations; `docs/js/fit.js` handles FIT; `docs/js/app.js` renders the interface. `docs/assets/style.css` owns design. Garmin vendor source and licence are bundled under `docs/vendor/fit/`. No web build step or third-party runtime requests.
+
+References: [Garmin SDK](https://github.com/garmin/fit-javascript-sdk), [Strava API](https://developers.strava.com/docs/reference/), [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
