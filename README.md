@@ -1,33 +1,55 @@
 # Pfitz 18/70 — Valencia 2026
 
-Phone-first dashboard for the Pfitzinger 18/70 block (3 Aug → 6 Dec 2026), with hourly
-Strava sync so actual mileage overlays the book schedule automatically.
+Your existing dashboard, now with detailed Strava workout exports and a sync scheduled every 10 minutes (at :07, :17, :27, :37, :47 and :57 UTC). GitHub schedules can run late; this is not real-time delivery.
 
-## Layout
-- `docs/index.html` — the dashboard (GitHub Pages serves from `/docs`)
-- `docs/plan.json` — the book schedule as data (weeks-to-goal numbering, km as printed)
-- `docs/activities.json` — actual runs, written by the sync job
-- `scripts/sync_strava.py` + `.github/workflows/sync.yml` — the automation
+## Install this update
 
-## Setup (one-time, ~10 minutes)
-1. Create a repo, push these files. In **Settings → Pages**, set source to
-   `main` branch, `/docs` folder. Bookmark the Pages URL on your phone
-   (Share → Add to Home Screen makes it feel like an app).
-2. Create a Strava API application at strava.com/settings/api. Note the
-   **Client ID** and **Client Secret**.
-3. Get a refresh token with `activity:read` scope:
-   - Visit (with your client ID substituted):
-     `https://www.strava.com/oauth/authorize?client_id=XXX&response_type=code&redirect_uri=http://localhost&approval_prompt=force&scope=activity:read_all`
-   - Approve, copy the `code=` value from the redirected URL.
-   - Exchange it:
-     `curl -X POST https://www.strava.com/oauth/token -d client_id=XXX -d client_secret=YYY -d code=ZZZ -d grant_type=authorization_code`
-   - Save the `refresh_token` from the response.
-4. In the repo, **Settings → Secrets and variables → Actions**, add
-   `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN`.
-5. Run the workflow once manually (Actions → Sync Strava → Run workflow) to
-   check it commits `activities.json`. After that it runs hourly.
+1. Copy the contents of this folder into your existing repository, including `.github/workflows/sync.yml`, `scripts/`, and `tests/`. Keep your existing repository secrets. The dashboard and training plan are unchanged.
+2. In **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**. This workflow now publishes `/docs` explicitly, because commits created using `GITHUB_TOKEN` do not trigger a branch-based Pages build.
+3. In **Actions → Sync Strava → Run workflow**, run it on the default branch. Check that both `sync` and `deploy` succeed.
+4. Open your existing Pages URL with `/workouts.json` appended. Give that URL to ChatGPT when asking about training. For detailed within-run analysis, also give the activity's linked `streams_file` URL. Public availability alone does not make ChatGPT automatically fetch the URL on every future conversation.
 
-## Tuning
-- Goal MP and the LT/V̇O₂max working bands are at the top of the `<script>` in
-  `index.html` (`CONFIG`). Retune LT after Oxford.
-- The plan itself lives in `plan.json` — edit there if a week gets rearranged.
+The uploaded project has no credentials. No live Strava request has been run to produce new data in this copy. The first workflow run creates the exports. History fills in over successive runs, newest first; `sync.pending_details` and `sync.pending_streams` show progress.
+
+## Files available on your website
+
+| Path relative to your existing Pages URL | Contents |
+| --- | --- |
+| `workouts.json` | All activity types; detailed workout metadata, full recorded laps, kilometre/mile splits, fetch status, and links to streams |
+| `workouts.csv` | One activity per row, including timing, distance, HR, cadence, power, elevation, device, description and workout type where available |
+| `workout-laps.csv` | One row per recorded lap or split; `kind` distinguishes laps, kilometre splits and mile splits; don't sum across these kinds |
+| `streams/<activity-id>.json` | Strava's recorded time, distance, speed, HR, cadence, power, altitude, grade, temperature and moving-state arrays, where available |
+| `activities.json` | Compatible compact run data used by the original dashboard |
+
+Exports start at 28 July 2026, matching the original project. All activity types are included so rides and hikes can be considered alongside running. Optional `STRAVA_FETCH_FROM` environment variable accepts an ISO timestamp with timezone, e.g. `2026-01-01T00:00:00+00:00`.
+
+## How to interpret the data
+
+- Distances are metres, durations seconds, speeds metres/second, pace seconds/km, HR bpm, power watts. Original cadence values are retained without doubling or conversion.
+- `elapsed_time` is total start-to-finish time, including stops; `moving_time` is Strava's moving time. Both have separate calculated pace fields using unrounded distance.
+- `nonmoving_time_s` is elapsed minus moving time. It is not an exact reconstruction of the watch's pause button history.
+- Laps include original stream indices and timestamps where provided. These are recorded laps, not guaranteed Garmin planned workout steps. Warm-up, effort and recovery labels are not invented. Strava's numeric `workout_type` is preserved as metadata, not interpreted as an interval prescription.
+- JSON absent fields and CSV blank cells mean unavailable, not zero. An activity can have no HR, no power, no laps or no streams.
+- Streams retain their original `data`, `resolution`, `original_size` and `series_type`. Use the time stream's offsets; do not assume exactly one sample per second. Inspect array lengths before joining them.
+- No GPS coordinates, route maps, athlete profiles or OAuth credentials are exported. Activity names, descriptions and workout metrics are public, including private activities accessible to the token. To publish only public activities, restrict the app's OAuth scope to `activity:read` and reauthorize.
+
+## Caching, freshness and errors
+
+The full activity summary list is refreshed each run. Missing detail/streams are fetched newest first. Successfully fetched details and streams refresh daily for activities from the last seven days, and weekly for older activities, subject to the request budget. Refreshing summaries does not imply every detail was refreshed: check each activity's `detail_fetched_at` and `streams_fetched_at`.
+
+There is a hard budget of 5 read requests per run, including pagination (at most 720 reads across 144 scheduled runs/day). Response rate-limit headers can stop requests sooner. Manual runs and other apps using the same credentials consume additional capacity. HTTP 429 ends enrichment cleanly and retains pending/cached data; later runs continue. Auth failures fail the workflow rather than publishing an empty history. A failed/incomplete summary pagination does not replace the public index. A successful complete listing removes exports of deleted or out-of-window activities on the next run; previously committed data remains in Git history.
+
+The existing `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, and `STRAVA_REFRESH_TOKEN` secrets are required. The token needs `activity:read` or `activity:read_all` depending on the intended activity visibility. As in the original project, this workflow does not automatically write GitHub secrets. If Strava rotates your refresh token, the job emits a warning; obtain/save the current token via your OAuth setup and update `STRAVA_REFRESH_TOKEN`. Tokens are never printed or committed.
+
+## Validation
+
+Run `python -m unittest discover -s tests -v` with Python 3.12. Tests use synthetic API responses and temporary output folders. They check distinct moving/elapsed pace, lap fields, legacy dashboard compatibility, caching, absent streams, budget interruption, deletion cleanup, and auth failure handling. The workflow runs these tests before syncing.
+
+## References
+
+- [Strava API reference](https://developers.strava.com/docs/reference/)
+- [Strava rate limits](https://developers.strava.com/docs/rate-limits/)
+- [Strava authentication and refresh tokens](https://developers.strava.com/docs/authentication/)
+- [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+
+The plan is in `docs/plan.json`; dashboard settings remain in `docs/index.html`.
