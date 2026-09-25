@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-18",
+  "week": 4,
+  "label": "26 km Long + G",
+  "type": "goal",
+  "detail": "6 E; 3 x 4 km G with 1 km steady between; 6 E to finish.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 6,
+      "intensity": "warmup",
+      "name": "Easy"
+    },
+    {
+      "kind": "repeat",
+      "reps": 3,
+      "name": "Repeat",
+      "steps": [
+        {
+          "kind": "distance",
+          "distance_km": 4,
+          "intensity": "active",
+          "name": "Goal pace",
+          "pace": "4:13-4:14/km"
+        },
+        {
+          "kind": "distance",
+          "distance_km": 1,
+          "intensity": "recovery",
+          "name": "Steady float",
+          "pace": "4:45-4:55/km"
+        }
+      ]
+    },
+    {
+      "kind": "distance",
+      "distance_km": 4,
+      "intensity": "cooldown",
+      "name": "Easy to total"
+    }
+  ],
+  "id": "2026-10-18-26-km-long-g"
+}

@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-11",
+  "week": 8,
+  "label": "12-16 km Intervals",
+  "type": "interval",
+  "detail": "AM 12: 4 x 3 min I, 2 min jog; optional PM 4 km recovery.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 3,
+      "intensity": "warmup",
+      "name": "Warm-up"
+    },
+    {
+      "kind": "repeat",
+      "reps": 4,
+      "name": "Repeat",
+      "steps": [
+        {
+          "kind": "time",
+          "minutes": 3,
+          "intensity": "active",
+          "name": "Interval",
+          "pace": "3:58-4:05/km"
+        },
+        {
+          "kind": "time",
+          "minutes": 2,
+          "intensity": "recovery",
+          "name": "Jog"
+        }
+      ]
+    },
+    {
+      "kind": "distance",
+      "distance_km": 3,
+      "intensity": "cooldown",
+      "name": "Easy to total"
+    }
+  ],
+  "id": "2026-11-11-12-16-km-intervals"
+}

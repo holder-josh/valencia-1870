@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-08",
+  "week": 7,
+  "label": "30 km Goal-pace long",
+  "type": "goal",
+  "detail": "12 E + 16 G + 2 E. Continuous G block.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 12,
+      "intensity": "warmup",
+      "name": "Easy"
+    },
+    {
+      "kind": "distance",
+      "distance_km": 16,
+      "intensity": "active",
+      "name": "Continuous goal pace",
+      "pace": "4:13-4:14/km"
+    },
+    {
+      "kind": "distance",
+      "distance_km": 2,
+      "intensity": "cooldown",
+      "name": "Easy"
+    }
+  ],
+  "id": "2026-11-08-30-km-goal-pace-long"
+}

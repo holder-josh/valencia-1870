@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-19",
+  "week": 9,
+  "label": "12 km Threshold",
+  "type": "threshold",
+  "detail": "3 E; 2 x 8 min T; 2 min jog; E to 12.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 3,
+      "intensity": "warmup",
+      "name": "Warm-up"
+    },
+    {
+      "kind": "repeat",
+      "reps": 2,
+      "name": "Repeat",
+      "steps": [
+        {
+          "kind": "time",
+          "minutes": 8,
+          "intensity": "active",
+          "name": "Threshold",
+          "pace": "4:15-4:20/km"
+        },
+        {
+          "kind": "time",
+          "minutes": 2,
+          "intensity": "recovery",
+          "name": "Jog"
+        }
+      ]
+    },
+    {
+      "kind": "distance",
+      "distance_km": 3,
+      "intensity": "cooldown",
+      "name": "Easy to total"
+    }
+  ],
+  "id": "2026-11-19-12-km-threshold"
+}

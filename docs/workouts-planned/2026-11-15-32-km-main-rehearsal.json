@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-15",
+  "week": 8,
+  "label": "32 km Main rehearsal",
+  "type": "goal",
+  "detail": "10 E + 20 G + 2 E. Race kit and fuel.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 10,
+      "intensity": "warmup",
+      "name": "Easy"
+    },
+    {
+      "kind": "distance",
+      "distance_km": 20,
+      "intensity": "active",
+      "name": "Main rehearsal",
+      "pace": "4:13-4:14/km"
+    },
+    {
+      "kind": "distance",
+      "distance_km": 2,
+      "intensity": "cooldown",
+      "name": "Easy"
+    }
+  ],
+  "id": "2026-11-15-32-km-main-rehearsal"
+}

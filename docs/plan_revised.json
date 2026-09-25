@@ -1,0 +1,1278 @@
+{
+  "meta": {
+    "name": "Valencia 2026 - Sub-3 revised plan",
+    "revised": "2026-09-23",
+    "race_date": "2026-12-06",
+    "goal_time": "sub-3:00",
+    "goal_pace": "4:13-4:14/km",
+    "paces": {
+      "E": "5:05-5:40/km",
+      "R": "5:30-6:10/km or slower",
+      "T": "4:15-4:20/km initially",
+      "I": "3:58-4:05/km initially",
+      "G": "4:13-4:14/km"
+    }
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "monday": "2026-09-21",
+      "location": "London",
+      "target_km": [
+        68,
+        70
+      ],
+      "phase": "Recovery + re-entry",
+      "days": {
+        "mon": {
+          "type": "cross",
+          "label": "Long ride",
+          "km": 0,
+          "detail": "113.2 km cycling, 5h09 moving. Completed.",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "easy",
+          "label": "10 km Easy run",
+          "km": 10,
+          "detail": "Completed. Also 10 km hiking.",
+          "steps": [],
+          "note": ""
+        },
+        "wed": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "Recovery day. No training.",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "threshold",
+          "label": "Threshold",
+          "km": 12,
+          "detail": "3 km easy; 2 x 3 km threshold; 2 min jog; easy to 12 km.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 2,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "distance",
+                  "distance_km": 3,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Cool-down"
+            }
+          ],
+          "note": ""
+        },
+        "fri": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "Easy throughout. No fast finish.",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "recovery",
+          "label": "6 km Recovery",
+          "km": 6,
+          "detail": "Very easy throughout.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "goal",
+          "label": "30 km Progression",
+          "km": 30,
+          "detail": "18 E + 5 steady + 5 G + 2 E. G 4:13-4:14/km only if controlled.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 18,
+              "intensity": "warmup",
+              "name": "Easy",
+              "pace": "5:05-5:40/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 5,
+              "intensity": "active",
+              "name": "Steady",
+              "pace": "4:45-4:55/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 5,
+              "intensity": "active",
+              "name": "Goal pace",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        }
+      },
+      "focus": "No threshold catch-up. Sunday quality only after normal easy running; otherwise 20-24 km easy."
+    },
+    {
+      "week": 2,
+      "monday": "2026-09-28",
+      "location": "London \u2192 Seoul",
+      "target_km": [
+        73,
+        76
+      ],
+      "phase": "Travel / threshold",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "No running or cycling.",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "threshold",
+          "label": "14 km Threshold",
+          "km": 14,
+          "detail": "3 E; 3 x 10 min T; 2 min jog between; E to 14 total.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 3,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 10,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "Conversational effort.",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "mlr",
+          "label": "22-25 km Medium-long",
+          "km": [
+            22,
+            25
+          ],
+          "detail": "All easy. Keep effort conversational.",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "easy",
+          "label": "10 km Easy run",
+          "km": 10,
+          "detail": "Morning only. Fly to Seoul later.",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "Flight / land in Seoul. No run.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "easy",
+          "label": "15 km Easy run",
+          "km": 15,
+          "detail": "Find your route. Easy throughout.",
+          "steps": [],
+          "note": ""
+        }
+      },
+      "focus": "30 minutes threshold Tuesday. Thursday 22-25 km all easy; no fast finish."
+    },
+    {
+      "week": 3,
+      "monday": "2026-10-05",
+      "location": "Seoul",
+      "target_km": 82,
+      "phase": "Build",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "No running or cycling.",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "threshold",
+          "label": "14 km Threshold",
+          "km": 14,
+          "detail": "3 E; 2 x 15 min T; 2 min jog; E to 14.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 2,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 15,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "Conversational effort.",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "mlr",
+          "label": "18 km Medium-long",
+          "km": 18,
+          "detail": "All easy. + strength 15 min.",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "6 km Recovery",
+          "km": 6,
+          "detail": "Relaxed recovery effort.",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "easy",
+          "label": "8 km Easy run",
+          "km": 8,
+          "detail": "Include 6 x 20 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "goal",
+          "label": "24 km Long + G",
+          "km": 24,
+          "detail": "8 E + 4 G + 1 E + 4 G + 7 E.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 8,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 4,
+              "intensity": "active",
+              "name": "G block 1",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 1,
+              "intensity": "recovery",
+              "name": "Steady float",
+              "pace": "4:45-4:55/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 4,
+              "intensity": "active",
+              "name": "G block 2",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 7,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        }
+      },
+      "focus": "2 x 4 km at goal pace. If G already feels like threshold, use current sustainable marathon effort."
+    },
+    {
+      "week": 4,
+      "monday": "2026-10-12",
+      "location": "Seoul",
+      "target_km": 85,
+      "phase": "Specific",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "threshold",
+          "label": "15 km Threshold",
+          "km": 15,
+          "detail": "3 E; 3 x 10 min T; 2 min jog; E to 15.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 3,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 10,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "mlr",
+          "label": "18 km Medium-long",
+          "km": 18,
+          "detail": "All easy.",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "6 km Recovery",
+          "km": 6,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "recovery",
+          "label": "8 km Recovery",
+          "km": 8,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "goal",
+          "label": "26 km Long + G",
+          "km": 26,
+          "detail": "6 E; 3 x 4 km G with 1 km steady between; 6 E to finish.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 6,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "repeat",
+              "reps": 3,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "distance",
+                  "distance_km": 4,
+                  "intensity": "active",
+                  "name": "Goal pace",
+                  "pace": "4:13-4:14/km"
+                },
+                {
+                  "kind": "distance",
+                  "distance_km": 1,
+                  "intensity": "recovery",
+                  "name": "Steady float",
+                  "pace": "4:45-4:55/km"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 4,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        }
+      },
+      "focus": "Extend to 3 x 4 km only after controlled 11 Oct; otherwise repeat 2 x 4."
+    },
+    {
+      "week": 5,
+      "monday": "2026-10-19",
+      "location": "Seoul",
+      "target_km": 79,
+      "phase": "Build",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "mlr",
+          "label": "18 km Medium-long",
+          "km": 18,
+          "detail": "All easy.",
+          "steps": [],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "threshold",
+          "label": "15 km Threshold",
+          "km": 15,
+          "detail": "3 E; 2 x 18 min T; 2 min jog; E to 15.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 2,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 18,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "8 km Recovery",
+          "km": 8,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "long",
+          "label": "26 km Long run",
+          "km": 26,
+          "detail": "All easy. Cap 2h30 elapsed. Practise race fuel.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "Hotel checkout. Hard hike tomorrow.",
+          "steps": [],
+          "note": ""
+        }
+      },
+      "focus": "36 minutes threshold Thursday. Saturday easy only before Monday hard hike."
+    },
+    {
+      "week": 6,
+      "monday": "2026-10-26",
+      "location": "Hiking, Seoul \u2192 London",
+      "target_km": [
+        52,
+        58
+      ],
+      "phase": "Hike / fly",
+      "days": {
+        "mon": {
+          "type": "cross",
+          "label": "Hard hike",
+          "km": 0,
+          "detail": "No run. Major training load.",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "wed": {
+          "type": "recovery",
+          "label": "10 km Recovery",
+          "km": 10,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "easy",
+          "label": "8 km Easy run",
+          "km": 8,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "goal",
+          "label": "20-26 km Long + G",
+          "km": [
+            20,
+            26
+          ],
+          "detail": "10 E + 12 G + 4 E only if recovered; otherwise all easy.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 10,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 12,
+              "intensity": "active",
+              "name": "Goal pace",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 4,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        },
+        "sat": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "Flight to London. No run.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "easy",
+          "label": "14 km Easy run",
+          "km": 14,
+          "detail": "Easy throughout after travel.",
+          "steps": [],
+          "note": ""
+        }
+      },
+      "focus": "No threshold this week. Friday goal block only after normal recovery from hike."
+    },
+    {
+      "week": 7,
+      "monday": "2026-11-02",
+      "location": "London",
+      "target_km": 90,
+      "phase": "Specific",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "threshold",
+          "label": "14 km Threshold",
+          "km": 14,
+          "detail": "3 E; 3 x 2 km T; 0.5 km jog; 4 E to finish.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 3,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "distance",
+                  "distance_km": 2,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "distance",
+                  "distance_km": 0.5,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "mlr",
+          "label": "20 km Medium-long",
+          "km": 20,
+          "detail": "All easy. + strength 15 min.",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "6 km Recovery",
+          "km": 6,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "easy",
+          "label": "8 km Easy run",
+          "km": 8,
+          "detail": "Include 4 x 20 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "goal",
+          "label": "30 km Goal-pace long",
+          "km": 30,
+          "detail": "12 E + 16 G + 2 E. Continuous G block.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 12,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 16,
+              "intensity": "active",
+              "name": "Continuous goal pace",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        }
+      },
+      "focus": "16 continuous km G. Extend only after a controlled 12 G on 30 Oct."
+    },
+    {
+      "week": 8,
+      "monday": "2026-11-09",
+      "location": "London",
+      "target_km": [
+        94,
+        98
+      ],
+      "phase": "Peak",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "Conversational. + strength 15 min.",
+          "steps": [],
+          "note": ""
+        },
+        "wed": {
+          "type": "interval",
+          "label": "12-16 km Intervals",
+          "km": [
+            12,
+            16
+          ],
+          "detail": "AM 12: 4 x 3 min I, 2 min jog; optional PM 4 km recovery.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 4,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 3,
+                  "intensity": "active",
+                  "name": "Interval",
+                  "pace": "3:58-4:05/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "thu": {
+          "type": "recovery",
+          "label": "8 km Recovery",
+          "km": 8,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "mlr",
+          "label": "20 km Medium-long",
+          "km": 20,
+          "detail": "All easy.",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "easy",
+          "label": "10 km Easy run",
+          "km": 10,
+          "detail": "Include 6 x 20 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "goal",
+          "label": "32 km Main rehearsal",
+          "km": 32,
+          "detail": "10 E + 20 G + 2 E. Race kit and fuel.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 10,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 20,
+              "intensity": "active",
+              "name": "Main rehearsal",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        }
+      },
+      "focus": "94 km core; optional 4 km PM. Main rehearsal is 20 continuous km G, 21 days before Valencia."
+    },
+    {
+      "week": 9,
+      "monday": "2026-11-16",
+      "location": "London",
+      "target_km": 72,
+      "phase": "Taper 1",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "recovery",
+          "label": "10 km Recovery",
+          "km": 10,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "12 km Easy run",
+          "km": 12,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "threshold",
+          "label": "12 km Threshold",
+          "km": 12,
+          "detail": "3 E; 2 x 8 min T; 2 min jog; E to 12.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 2,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 8,
+                  "intensity": "active",
+                  "name": "Threshold",
+                  "pace": "4:15-4:20/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "6 km Recovery",
+          "km": 6,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "easy",
+          "label": "8 km Easy run",
+          "km": 8,
+          "detail": "Include 4 x 20 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "goal",
+          "label": "24 km Long + G",
+          "km": 24,
+          "detail": "14 E + 8 G + 2 E. Practise breakfast, kit and fuel.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 14,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 8,
+              "intensity": "active",
+              "name": "Race pace",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        }
+      },
+      "focus": "Reduce volume after main rehearsal. Use G only if 15 Nov supports it."
+    },
+    {
+      "week": 10,
+      "monday": "2026-11-23",
+      "location": "London",
+      "target_km": 54,
+      "phase": "Taper 2",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "interval",
+          "label": "10 km Intervals",
+          "km": 10,
+          "detail": "3 E; 4 x 2 min I; 2 min jog; E to 10.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Warm-up"
+            },
+            {
+              "kind": "repeat",
+              "reps": 4,
+              "name": "Repeat",
+              "steps": [
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "active",
+                  "name": "Interval",
+                  "pace": "3:58-4:05/km"
+                },
+                {
+                  "kind": "time",
+                  "minutes": 2,
+                  "intensity": "recovery",
+                  "name": "Jog"
+                }
+              ]
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy to total"
+            }
+          ],
+          "note": ""
+        },
+        "wed": {
+          "type": "easy",
+          "label": "8 km Easy run",
+          "km": 8,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "thu": {
+          "type": "goal",
+          "label": "10 km Race pace",
+          "km": 10,
+          "detail": "3 E + 5 G + 2 E. Comfortably controlled.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 5,
+              "intensity": "active",
+              "name": "Race pace",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "4 km Recovery",
+          "km": 4,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "easy",
+          "label": "4 km Easy run",
+          "km": 4,
+          "detail": "Include 4 x 20 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "long",
+          "label": "18 km Long run",
+          "km": 18,
+          "detail": "All easy. Finish feeling you could do more.",
+          "steps": [],
+          "note": ""
+        }
+      },
+      "focus": "Fast running stays relaxed and brief. No catch-up sessions."
+    },
+    {
+      "week": 11,
+      "monday": "2026-11-30",
+      "location": "Valencia",
+      "target_km": 70.2,
+      "phase": "Race",
+      "days": {
+        "mon": {
+          "type": "rest",
+          "label": "Rest",
+          "km": 0,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "tue": {
+          "type": "easy",
+          "label": "8 km Easy run",
+          "km": 8,
+          "detail": "Include 4 x 20 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "wed": {
+          "type": "goal",
+          "label": "8 km Dress rehearsal",
+          "km": 8,
+          "detail": "3 E + 3 G + 2 E. Use race shoes.",
+          "steps": [
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "warmup",
+              "name": "Easy"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 3,
+              "intensity": "active",
+              "name": "Race pace",
+              "pace": "4:13-4:14/km"
+            },
+            {
+              "kind": "distance",
+              "distance_km": 2,
+              "intensity": "cooldown",
+              "name": "Easy"
+            }
+          ],
+          "note": ""
+        },
+        "thu": {
+          "type": "easy",
+          "label": "6 km Easy run",
+          "km": 6,
+          "detail": "",
+          "steps": [],
+          "note": ""
+        },
+        "fri": {
+          "type": "recovery",
+          "label": "3 km Recovery",
+          "km": 3,
+          "detail": "Brief shakeout.",
+          "steps": [],
+          "note": ""
+        },
+        "sat": {
+          "type": "easy",
+          "label": "3 km Easy run",
+          "km": 3,
+          "detail": "Include 3 x 15 sec strides.",
+          "steps": [],
+          "note": ""
+        },
+        "sun": {
+          "type": "race",
+          "label": "VALENCIA",
+          "km": 42.195,
+          "detail": "Sub-3 target. Goal 4:13-4:14/km.",
+          "steps": [],
+          "note": ""
+        }
+      },
+      "focus": "28 km before race day; 70.2 km including marathon. Keep sightseeing light."
+    }
+  ]
+}

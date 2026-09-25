@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-30",
+  "week": 6,
+  "label": "20-26 km Long + G",
+  "type": "goal",
+  "detail": "10 E + 12 G + 4 E only if recovered; otherwise all easy.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 10,
+      "intensity": "warmup",
+      "name": "Easy"
+    },
+    {
+      "kind": "distance",
+      "distance_km": 12,
+      "intensity": "active",
+      "name": "Goal pace",
+      "pace": "4:13-4:14/km"
+    },
+    {
+      "kind": "distance",
+      "distance_km": 4,
+      "intensity": "cooldown",
+      "name": "Easy"
+    }
+  ],
+  "id": "2026-10-30-20-26-km-long-g"
+}

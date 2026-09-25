@@ -1,3 +1,25 @@
+# Valencia 1870 - training dashboard
+
+This package replaces the previous simple page with the revised 11-week Valencia dashboard.
+
+## What is included
+
+- Revised 23 September 2026 plan in `docs/plan_revised.json` (the older Pfitz plan remains as `docs/plan.json` for reference).
+- Plan, Activities, Volume and Fitness views.
+- Planned-vs-actual matching by date, expandable weeks, calendar, weekly mileage and lap/split inspection.
+- Editable quality sessions stored in browser localStorage.
+- 17 source workout JSON files in `docs/workouts-planned/`.
+- Garmin FIT export from the workout editor using Garmin's official JavaScript FIT SDK, loaded from jsDelivr when online.
+- Existing detailed Strava export pipeline and 10-minute GitHub Action retained.
+
+## Install
+
+Replace the contents of your current GitHub repository with the contents of this folder, preserving your existing Strava repository secrets. Then run **Actions → Sync Strava → Run workflow** once. GitHub Pages should use **GitHub Actions** as its source.
+
+The dashboard tries `workouts.json` first and falls back to `activities.json` while detailed history is still filling.
+
+---
+
 # Pfitz 18/70 — Valencia 2026
 
 Your existing dashboard, now with detailed Strava workout exports and a sync scheduled every 10 minutes (at :07, :17, :27, :37, :47 and :57 UTC). GitHub schedules can run late; this is not real-time delivery.

@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-24",
+  "week": 10,
+  "label": "10 km Intervals",
+  "type": "interval",
+  "detail": "3 E; 4 x 2 min I; 2 min jog; E to 10.",
+  "steps": [
+    {
+      "kind": "distance",
+      "distance_km": 3,
+      "intensity": "warmup",
+      "name": "Warm-up"
+    },
+    {
+      "kind": "repeat",
+      "reps": 4,
+      "name": "Repeat",
+      "steps": [
+        {
+          "kind": "time",
+          "minutes": 2,
+          "intensity": "active",
+          "name": "Interval",
+          "pace": "3:58-4:05/km"
+        },
+        {
+          "kind": "time",
+          "minutes": 2,
+          "intensity": "recovery",
+          "name": "Jog"
+        }
+      ]
+    },
+    {
+      "kind": "distance",
+      "distance_km": 2,
+      "intensity": "cooldown",
+      "name": "Easy to total"
+    }
+  ],
+  "id": "2026-11-24-10-km-intervals"
+}
