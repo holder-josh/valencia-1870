@@ -2264,3 +2264,4 @@ activity_id,activity_name,kind,sequence,id,name,lap_index,split,start_index,end_
 19511026379,Back at it. 130 days to Valencia Marathon,splits_standard,2,,,,2,,,,,1607.0,487,487,,0.2,3.3,,154.1581108829569,,,,,,2,3.34,303.049,303.049,0
 19511026379,Back at it. 130 days to Valencia Marathon,splits_standard,3,,,,3,,,,,1610.0,488,488,,-0.2,3.3,,158.56147540983608,,,,,,2,3.35,303.106,303.106,0
 19511026379,Back at it. 130 days to Valencia Marathon,splits_standard,4,,,,4,,,,,1352.1,410,410,,-6.4,3.3,,162.51951219512196,,,,,,2,3.28,303.232,303.232,0
+19504288402,Evening Weight Training,laps,1,69666564112,Lap 1,1,1,0,1228,2026-07-28T17:50:10Z,2026-07-28T18:50:10Z,0.0,2452,2452,0,,0.0,0.0,113.6,144.0,,,,False,,,,,0
