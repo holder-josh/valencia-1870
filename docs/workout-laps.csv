@@ -1,4 +1,21 @@
 activity_id,activity_name,kind,sequence,id,name,lap_index,split,start_index,end_index,start_date,start_date_local,distance,moving_time,elapsed_time,total_elevation_gain,elevation_difference,average_speed,max_speed,average_heartrate,max_heartrate,average_cadence,average_watts,max_watts,device_watts,pace_zone,average_grade_adjusted_speed,moving_pace_s_per_km,elapsed_pace_s_per_km,nonmoving_time_s
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,laps,1,74008998682,Lap 0,0,0,0,3064,2026-10-27T02:18:47Z,2026-10-27T11:18:47Z,9135.0,10202,11070,707.6,,0.9,3.82,115.2,174.0,52.7,,,False,,,1116.804,1211.823,868
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,1,,,,1,,,,,1001.4,714,714,,16.4,1.4,,109.07522123893806,,,,,,0,,713.002,713.002,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,2,,,,2,,,,,1003.9,790,790,,43.8,1.27,,109.35588633288228,,,,,,0,,786.931,786.931,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,3,,,,3,,,,,999.2,718,718,,86.4,1.39,,117.9327731092437,,,,,,0,,718.575,718.575,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,4,,,,4,,,,,1001.0,1232,1331,,163.0,0.81,,125.7479601087942,,,,,,0,,1230.769,1329.67,99
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,5,,,,5,,,,,997.3,2089,2089,,283.0,0.48,,144.88491228070174,,,,,,0,,2094.656,2094.656,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,6,,,,6,,,,,997.8,1740,2510,,-343.8,0.57,,108.383431085044,,,,,,0,,1743.836,2515.534,770
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,7,,,,7,,,,,1006.0,971,971,,-137.4,1.04,,106.85745375408052,,,,,,0,,965.209,965.209,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,8,,,,8,,,,,996.8,909,909,,-65.0,1.1,,97.60886075949367,,,,,,0,,911.918,911.918,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,9,,,,9,,,,,1003.1,941,941,,-34.6,1.07,,96.9272503082614,,,,,,0,,938.092,938.092,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_metric,10,,,,10,,,,,128.5,97,97,,-3.6,1.32,,96.03092783505154,,,,,,0,,754.864,754.864,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_standard,1,,,,1,,,,,1609.4,1234,1234,,41.4,1.3,,107.9642545771578,,,,,,0,,766.745,766.745,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_standard,2,,,,2,,,,,1611.0,1206,1206,,131.0,1.34,,117.98736310025274,,,,,,0,,748.603,748.603,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_standard,3,,,,3,,,,,1609.6,2524,2623,,439.4,0.64,,140.65469348659005,,,,,,0,,1568.091,1629.597,99
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_standard,4,,,,4,,,,,1610.1,2799,3569,,-436.0,0.58,,108.69286754002911,,,,,,0,,1738.401,2216.633,770
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_standard,5,,,,5,,,,,1610.3,1450,1450,,-131.0,1.11,,100.72291021671826,,,,,,0,,900.453,900.453,0
+20746283487,Ulsanbawi peak - Seoraksan National Park ❤️🇰🇷,splits_standard,6,,,,6,,,,,1084.6,988,988,,-36.6,1.1,,96.50867052023122,,,,,,0,,910.935,910.935,0
 20732721269,Morning Run,laps,1,73966776897,Lap 0,0,0,0,319,2026-10-26T01:26:43Z,2026-10-26T10:26:43Z,1000.0,318,338,7.0,,3.14,4.02,134.9,149.0,79.7,384.5,,True,1,,318.0,338.0,20
 20732721269,Morning Run,laps,2,73966776898,Lap 1,1,1,320,631,2026-10-26T01:32:22Z,2026-10-26T10:32:22Z,1000.0,311,311,4.8,,3.22,3.7,147.1,152.0,78.9,400.1,,True,1,,311.0,311.0,0
 20732721269,Morning Run,laps,3,73966776899,Lap 2,2,2,632,946,2026-10-26T01:37:34Z,2026-10-26T10:37:34Z,1000.0,315,315,1.2,,3.17,3.86,146.6,152.0,78.2,389.7,,True,1,,315.0,315.0,0
