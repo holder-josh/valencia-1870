@@ -1,4 +1,11 @@
 activity_id,activity_name,kind,sequence,id,name,lap_index,split,start_index,end_index,start_date,start_date_local,distance,moving_time,elapsed_time,total_elevation_gain,elevation_difference,average_speed,max_speed,average_heartrate,max_heartrate,average_cadence,average_watts,max_watts,device_watts,pace_zone,average_grade_adjusted_speed,moving_pace_s_per_km,elapsed_pace_s_per_km,nonmoving_time_s
+20999773492,Afternoon Run,laps,1,74906967877,Lap 0,0,0,0,377,2026-11-15T16:05:59Z,2026-11-15T16:05:59Z,1000.0,377,377,17.4,,2.65,3.38089,148.8,162.0,77.3,364.0,,True,1,,377.0,377.0,0
+20999773492,Afternoon Run,laps,2,74906967878,Lap 1,1,1,378,629,2026-11-15T16:12:17Z,2026-11-15T16:12:17Z,728.8,252,252,0.0,,2.89,3.5,151.6,161.0,77.2,349.3,,True,1,,345.774,345.774,0
+20999773492,Afternoon Run,splits_metric,1,,,,1,,,,,1003.0,377,377,,15.4,2.66,,148.75466666666668,,,,,,1,2.83,375.872,375.872,0
+20999773492,Afternoon Run,splits_metric,2,,,,2,,,,,725.8,252,252,,-9.2,2.88,,151.58333333333334,,,,,,1,2.82,347.203,347.203,0
+20999773492,Afternoon Run,splits_standard,1,,,,1,,,,,1611.3,588,588,,7.6,2.74,,150.1296928327645,,,,,,1,2.83,364.923,364.923,0
+20999773492,Afternoon Run,splits_standard,2,,,,2,,,,,117.5,41,41,,-1.4,2.87,,146.4878048780488,,,,,,1,2.8,348.936,348.936,0
+20999620090,Afternoon Weight Training,laps,1,74906376187,Lap 0,0,0,0,1213,2026-11-15T15:22:36Z,2026-11-15T15:22:36Z,0.0,2516,2516,0,,0.0,0.0,114.8,143.0,,,,False,,,,,0
 20982114411,Morning Run,laps,1,74835880909,Lap 0,0,0,0,322,2026-11-14T08:47:14Z,2026-11-14T08:47:14Z,1000.0,321,321,6.6,,3.12,3.74,139.0,151.0,79.4,385.8,,True,1,,321.0,321.0,0
 20982114411,Morning Run,laps,2,74835880910,Lap 1,1,1,323,633,2026-11-14T08:52:37Z,2026-11-14T08:52:37Z,1000.0,309,331,3.0,,3.24,3.66,152.4,158.0,80.5,388.0,,True,1,,309.0,331.0,22
 20982114411,Morning Run,laps,3,74835880911,Lap 2,2,2,634,943,2026-11-14T08:58:09Z,2026-11-14T08:58:09Z,1000.0,310,310,0.0,,3.23,3.58,151.3,154.0,80.1,381.4,,True,1,,310.0,310.0,0
